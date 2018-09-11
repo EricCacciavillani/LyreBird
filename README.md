@@ -1,1 +1,1 @@
-![alt text](LyreBird/Production/Pictures/Logo/LyreBird Logo.psd "Description goes here")
+![stack Overflow](http://lmsotfy.com/so.png)
