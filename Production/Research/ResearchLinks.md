@@ -6,6 +6,9 @@
  - Magenta https://magenta.tensorflow.org/
  - PySynth https://github.com/mdoege/PySynth
 
+## training sets
+ - metal midi http://metal-midi.grahamdowney.com
+
 ## reading
  - convert sounds to midi https://github.com/justinsalamon/audio_to_midi_melodia
  - analyzing six ml tools for music generation http://www.asimovinstitute.org/analyzing-deep-learning-tools-music/
