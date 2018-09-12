@@ -4,6 +4,7 @@
 
 ## code
  - Magenta https://magenta.tensorflow.org/
+ - PySynth https://github.com/mdoege/PySynth
 
 ## reading
  - convert sounds to midi https://github.com/justinsalamon/audio_to_midi_melodia
