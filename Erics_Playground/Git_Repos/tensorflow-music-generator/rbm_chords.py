@@ -21,7 +21,7 @@ import os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-ABS_PTH = '/home/ericcacciavillani/LyreBird/Erics_Playground/'
+ABS_PTH = '/home/ericcacciavillani/Erics_Playground/'
 def get_songs(path):
     files = glob.glob('{}/*.mid*'.format(path))
     songs = []
