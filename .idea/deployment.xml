@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData">
+    <serverData>
+      <paths name="eric@162.247.90.201:1027">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/eric/Desktop/LyreBird" local="$PROJECT_DIR$" web="/home/eric/Desktop/LyreBird" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

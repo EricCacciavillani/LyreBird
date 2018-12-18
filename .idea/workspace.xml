@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="" />
+    <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared_Files/Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datasets/Electronic_Music_Midi/Icon&#13;" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/__pycache__/Icon&#13;" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datasets/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datasets/Jazz_Music_Midi/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main_Production/Models/LSTM_Models/Pop_Music_LSTM_Model.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main_Production/Models/LSTM_Models/Rock_Music_LSTM_Model.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model_Generation/LSTM_Generation/Basic_LSTM_Model_Trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model_Generation/LSTM_Generation/Trainer_Controller_Basic_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model_Generation/LSTM_Generation/__pycache__/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model_Generation/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Global_Util.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,59 +25,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SMS_Test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py">
+      <file leaf-file-name="Constants.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+            <state relative-caret-position="75">
+              <caret line="5" column="16" selection-start-line="5" selection-end-line="5" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trainer_Controller.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Basic_LSTM_Model_Trainer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Model_Generation/LSTM_Generation/Basic_LSTM_Model_Trainer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
-              <folding>
-                <element signature="e#0#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model_Generation/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="18" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LSTM_Muisc_generator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#68#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Trainer_Controller_Basic_LSTM.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model_Generation/LSTM_Generation/Trainer_Controller_Basic_LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -83,6 +61,24 @@
       <find>start_sequence</find>
       <find>output_notes</find>
       <find>/home/eric/Desktop/LyreBird/Main_Production/LSTM_Generation</find>
+      <find>track</find>
+      <find>notes</find>
+      <find>discrete_notes</find>
+      <find>output_note</find>
+      <find>LSTM_DATA_DUMP_PTH</find>
+      <find>NUM_TRAIN_FILES</find>
+      <find>CATEGORICAL_MODEL_GENERATION</find>
+      <find>model_name</find>
+      <find>DATA_DUMP</find>
+      <find>LSTM_MODELS_PATH</find>
+      <find>shelve</find>
+      <find>genre_name</find>
+      <find>DATA_DUMP_PATH</find>
+      <find>LSTM_DATA_DUMP_PATH</find>
+      <find>model_accur_shelf</find>
+      <find>genre_tone_dict</find>
+      <find>max_accur</find>
+      <find>note</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -108,9 +104,24 @@
         <option value="$PROJECT_DIR$/Main_Production/LSTM_Generation/Trainer_Controller_Basic_LSTM.py" />
         <option value="$PROJECT_DIR$/Main_Production/LSTM_Generation/Basic_LSTM_Model_Trainer.py" />
         <option value="$PROJECT_DIR$/Main_Production/LSTM_Generation/LSTM_Muisc_generator.py" />
-        <option value="$PROJECT_DIR$/Model_Generation/LSTM_Generation/Trainer_Controller_Basic_LSTM.py" />
         <option value="$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py" />
+        <option value="$PROJECT_DIR$/Model_Generation/LSTM_Generation/Trainer_Controller_Basic_LSTM.py" />
         <option value="$PROJECT_DIR$/Model_Generation/LSTM_Generation/Basic_LSTM_Model_Trainer.py" />
+        <option value="$PROJECT_DIR$/Backend_Production/LSTM_Generation/Trainer_Controller_Basic_LSTM.py" />
+        <option value="$PROJECT_DIR$/Backend_Production/LSTM_Generation/Basic_LSTM_Model_Trainer.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Global_Util.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Note_Encoder_and_Tracking.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Model_Generation/Note_Encoder_and_Tracking.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Basic_LSTM_Model_Trainer.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Basic_LSTM_Model_Trainer.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Catgorical_Notes_Model_Train.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Constants.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/focal_loss.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Constants.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Focal_Loss.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py" />
       </list>
     </option>
   </component>
@@ -123,9 +134,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="838" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="252" />
+    <option name="y" value="23" />
+    <option name="width" value="1428" />
+    <option name="height" value="926" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -133,7 +146,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,45 +156,46 @@
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Datasets" type="462c0819:PsiDirectoryNode" />
+              <item name="Erics_Playground" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Main_Production" type="462c0819:PsiDirectoryNode" />
+              <item name="Erics_Playground" type="462c0819:PsiDirectoryNode" />
+              <item name="Git_Repos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Main_Production" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="Erics_Playground" type="462c0819:PsiDirectoryNode" />
+              <item name="Git_Repos" type="462c0819:PsiDirectoryNode" />
+              <item name="Keras-Music-Generation-master" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Main_Production" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="LSTM_Models" type="462c0819:PsiDirectoryNode" />
+              <item name="Pre_Production" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Model_Generation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Model_Generation" type="462c0819:PsiDirectoryNode" />
+              <item name="Pre_Production" type="462c0819:PsiDirectoryNode" />
               <item name="LSTM_Generation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
+              <item name="Shared_Files" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -191,18 +204,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Erics_Playground/Main_Production" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Main_Production" />
-      <recent name="$PROJECT_DIR$/Main_Production/Models/LSTM_Models" />
-      <recent name="$PROJECT_DIR$/Model_Generation" />
+      <recent name="$PROJECT_DIR$/Shared_Files" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Main_Production/LSTM_Generation" />
+      <recent name="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation" />
+      <recent name="$PROJECT_DIR$/Pre_Production/LSTM_Generation" />
+      <recent name="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Model_Generation" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -231,32 +245,32 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1107" height="1050" extended-state="6" />
+    <frame x="252" y="23" width="1428" height="926" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="8" weight="0.31462926" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.3032213" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37669376" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2920168" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3296593" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.3032213" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="File Transfer" order="8" weight="0.31462926" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286385" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,14 +279,137 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="98" column="44" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2340">
+          <caret line="167" column="19" lean-forward="true" selection-start-line="167" selection-start-column="19" selection-end-line="167" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="98" column="44" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2370">
+          <caret line="158" column="62" lean-forward="true" selection-start-line="158" selection-start-column="62" selection-end-line="158" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -280,9 +417,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1485">
           <caret line="105" column="8" lean-forward="true" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -310,91 +444,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Main_Production/Music Composition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="23" column="116" selection-start-line="23" selection-start-column="116" selection-end-line="23" selection-end-column="116" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Main_Production/Music Composition.py" />
     <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/neuralaudiostyle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1841">
           <caret line="130" selection-start-line="130" selection-end-line="138" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Keras_Testing.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Research/ResearchLinks.md">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Keras_Testing.py">
+    <entry file="file://$USER_HOME$/Downloads/focal-loss-keras-master/focal_loss.py" />
+    <entry file="file://$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-84">
+          <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Research/ResearchLinks.md">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2745">
-          <caret line="183" column="45" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="775">
+          <caret line="98" column="44" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model_Generation/LSTM_Generation/Trainer_Controller_Basic_LSTM.py">
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model_Generation/util.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="18" />
+        <state relative-caret-position="315">
+          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model_Generation/LSTM_Generation/Basic_LSTM_Model_Trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
