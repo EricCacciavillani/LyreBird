@@ -23,7 +23,7 @@ TRACK_INDEX = 0
 
 TRAINING_DATASET_PTH = sys.argv[1]
 
-GENRE_NAME = (TRAINING_DATASET_PTH.split('/', -1)[-1]).replace('_Midi','')
+GENRE_NAME = (TRAINING_DATASET_PTH.split('/', -1)[-1]).replace('_Midi', '')
 
 # Grab files full path for each midi file in the training set
 train_files = [TRAINING_DATASET_PTH + "/" + file
@@ -129,6 +129,7 @@ while train_files:
 
     # Model doesn't exists currently; generate it
     else:
+
         model = Sequential()
         model.add(LSTM(128, return_sequences=True, input_shape=(INPUT_SEQUENCE_LEN,
                                                                 length_all_possible_tones)))
