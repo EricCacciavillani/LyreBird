@@ -1,5 +1,0 @@
-'genre_tone_dict', (2560, 92338)
-'all_possible_tones', (95232, 27631)
-'length_all_possible_tones', (1024, 6)
-'master_note_decoder', (1536, 6)
-'master_note_encoder', (122880, 32027)

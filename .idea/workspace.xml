@@ -2,8 +2,504 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared_Files/Custom_Exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared_Files/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Dump/Label_Encoder_Tone_Data.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Dump/Label_Encoder_Tone_Data.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Dump/Label_Encoder_Tone_Data.dir" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/Erics_Playground.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/codeStyles/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/inspectionProfiles/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/.ipynb_checkpoints/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/.ipynb_checkpoints/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/.ipynb_checkpoints/Music Composition-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/README.MD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/chpn_op10_e01.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/chpn_op23.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/output/first_20_output.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/output/second_50_output.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/output/test_output_second.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/screenshots/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/screenshots/fifty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/screenshots/train.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/screenshots/twenty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/test_output.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/A Little Bit More (Dr. Hook) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Alices Restaurant (Arlo Guthrie) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/All By Myself (Eric Carmen) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Always (Atlantic Starr) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Ammonia Avenue (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Another Saturday Night (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Any Way You Want It (The Dave Clark Five) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/At The Hop (Danny and The Juniors) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Aubrey (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Baby Blue (Badfinger) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Baby Come Back (Equals) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Baby I Love You (Andy Kim) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Baby Im A Want You (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Beach Baby (First Class) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Big Country (Big Country) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Bits and Pieces (The Dave Clark Five) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Blueberry Hill (Fats Domino) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Boys of Summer (Don Henley) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Carribean Queen (Billy Ocean) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Catch Us If You Can (The Dave Clark Five) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Catch my Fall (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Caught Up In You (38 Special) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Charlie Brown (The Coasters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/City of New Orleans (Arlo Guthrie) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Come And Get It (Badfinger) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Come On Everybody (Eddie Cochran) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Cruel Summer (Bananarama) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Daisy Jane (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Damned if I Do (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dancing With Myself (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Day After Day (Badfinger) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Devil Woman (Cliff Richard) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Diary (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dirty Laundry (Don Henley) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Do Not Stand in the Shadows (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dont Answer Me (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dont Cry (Asia) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dont Let It Show (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dreadlock Holiday (10cc) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Dream Lover (Bobby Darin) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Drift Away (Dobie Gray) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/End of the Innocence (Don Henley) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Epic (Faith No More) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Eve (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Every Little Step You Take (Bobby Brown) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Everything I Own (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Eye in the Sky (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Eyes Without A Face (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Fantasy Girl (38 Special) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Father and Son (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Flesh for Fantasy (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Fool if You Think its Over (Chris Rea) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Fooled Around And Fell In L (Elvin Bishop) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/For What Its Worth (Buffalo Springfield) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Frankenstein (Edgar Winter) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Free Ride (Edgar Winter) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Friday on My Mind (The Easybeats) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Games People Play (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Get Outta My Dreams (Billy Ocean) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Goodbye Girl (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Goodbye Girl (David Gates) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Got to be Real (Cheryl Lynn) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Guitar Man (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Heat Of The Moment (Asia) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Here Comes that Rainy Day (The Fortunes) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Here Comes the Rain Again (The Eurythmics) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Hip Hugger (Booker T and the MGs) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Hocus Pocus (Focus) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Holding On To Yesterday (Ambrosia) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Hot Rod Lincoln (Commander Cody) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Hot in the City (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/How Long (Ace) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Hungry Eyes (Eric Carmen) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Hunting High And Low (Aha) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Am A Rock (Simon &amp; Garfunkel) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Can Help (Billy Swan) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Dont Like Mondays (Boomtown Rats) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Fought The Law (Bobby Fuller Four) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Hear You Knocking (Dave Edmunds) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Know Ill Never Love This (Cheryl Ladd) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Need You (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Only Have Eyes For You (The Flamingos) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Only Want To Be With You (Bay City Rollers) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Swear (All 4 One) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Touch Myself (Divinyls) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/I Wouldnt Want to Be Like (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/If (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Im Not In Love (10cc) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Imaginary Lover (Atlanta Rhythm Section) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/It Dont Matter to Me (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/It Never Rains in So Cal (Albert Hammond) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/It's Still Rock and Roll to Me (Billy Joel) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Just Remember I Love you (Firefall) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Kind Of A Drag (The Buckinghams) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Kiss you all over (Exile) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Knock on Wood (Eddie Floyd) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Kung Fu Fighting (Carl Douglas) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Laugh Laugh (Beau Brummels) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Lets Stay Together (Al Green) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Lets Twist Again (Chubby Checker) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Lonely Boy (Andrew Gold) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Lonely People (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Love Grows (Edison Lighthouse) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Love is a Stranger (The Eurythmics) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Loverboy (Billy Ocean) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Loves Me Like A Rock (Paul Simon) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Mack the Knife (Bobby Darin) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Make It With You (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Me and Mrs  Jones (Billy Paul) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Mellow Yellow (Donovan) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Mercy Mercy Mercy (The Buckinghams) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Midnight Rendezvous (The Babys) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Monster Mash (Bobby Boris Pickett) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Mony Mony (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Moonshadow (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/More Than Words (Extreme) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Morning Has Broken (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Mr Jones (Counting Crows) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/My Maria (BW Stevenson) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/My Perogative (Bobby Brown) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Never Gonna Fall In Love (Eric Carmen) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/New York Minute (Don Henley) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/No Matter What (Badfinger) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/No More I Love Yous (Annie Lennox) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Nothin from Nothin (Billy Preston) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Obsession (Animotion) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Oh Very Young (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/On Broadway (The Drifters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/On the Border (Al Stewart) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/One Thing Leads to Another (The Fixx) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/One Toke Over The Line (Brewer and Shipley) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Only Sixteen (Dr. Hook) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Only Time Will Tell (Asia) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Peace Train (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Poison Arrow (ABC) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Precious Love (Bob Welch) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Pretty Little Angel Eyes (Curtis Lee) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Prime Time (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rebel Yell (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Red Rubber Ball (The Cyrkle) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rescue Me (Fontella Bass) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Ride Captain Ride (Blues Image) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Right Place Wrong Time (Dr. John) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Ring My Bell (Anita Ward) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rock Around the Clock (Bill Haley and The Comets) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rock DJ (Robbie Williams) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rock Me Gently (Andy Kim) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rock with You (Michael Jackson) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Rockin Robin (Michael Jackson) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Round Here (Counting Crows) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sandman (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Save the Last Dance for Me (The Drifters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sentimental Lady (Bob Welch) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sexy Eyes (Dr. Hook) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sharing the Night Together (Dr. Hook) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/She Drives Me Crazy (Fine Young Cannibals) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Show and Tell (Al Wilson) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Simon Says (1910 Fruitgum Company) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sister Golden Hair (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Smokin In The Boys Room (Brownsville Station) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/So In To You (Atlanta Rhythm Section) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sometimes When We Touch (Dan Hill) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Suddenly (Billy Ocean) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sugar Sugar (Archies) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sunglasses at Night (Corey Hart) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sunshine Superman (Donovan) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sweet Dreams (The Eurythmics) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sweet Love (Anita Baker) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sweet Surrender (Bread) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Sylvias Mother (Dr. Hook) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Take My Breath Away (Berlin) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Take On Me (Aha) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Tell It Like It Is (Aaron Neville) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Thank You for Being a Fr (Andrew Gold) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Day We Find Love (911) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Letter (The Boxtops) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Look of Love (ABC) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Metro (Berlin) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Night They Drove Old (The Band) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Smile Has Left Your Eye (Asia) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Sun Always Shines On TV (Aha) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Things We Do for Love (10cc) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Turn of a Friendly Card (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/The Twist (Chubby Checker) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/This Magic Moment (The Drifters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Tighter Tighter (Alive) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Time (Alan Parsons) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Time Passages (Al Stewart) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Tin Man (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Turn Turn Turn (The Byrds) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Under the Boardwalk (The Drifters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Up on the Roof (The Drifters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Ventura Highway (America) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Venus (Bananarama) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/We Dont Talk Anymore (Cliff Richard) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/We Just Disagree (Dave Mason) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Weekend in New England (Barry Mann) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/When I See You Smile (Bad English) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/When Youre In Love (Dr. Hook) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/When the Going Gets Tough (Billy Ocean) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/White Wedding (Billy Idol) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Who put the Bomp (Barry Mann) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Wild World (Cat Stevens) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Will it Go Round in Circles (Billy Preston) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Would I Lie to You (The Eurythmics) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Yakety Yak (The Coasters) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Year of the Cat (Al Stewart) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Yellow Polka Dot Bikini (Brian Hyland) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/You are the Woman (Firefall) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/trainedOn/Youve Got Your Troubles (The Fortunes) -.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/midi/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/play/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/samples/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/test/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/test/initiator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/test/initiator_old.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/data/test/midi_keyboard_correspondance.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/composer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/imgconnector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/keyboardcell.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/midiconnector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/model_old.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/moduleloader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modulemanager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modules/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modules/batchbuilder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modules/decoder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modules/encoder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modules/learningratepolicy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/modules/loopprocessing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/musicdata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/songstruct.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/deepmusic/tfutils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/ideas.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/imgs/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/imgs/basic_rnn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/imgs/endecell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/imgs/training_begin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/imgs/training_end.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi/basic_rnn_joplin.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi/basic_rnn_ragtime_-38000-0-C4.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi/basic_rnn_ragtime_BaseStructure.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi/basic_rnn_ragtime_TempoChange.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/midi/basic_rnn_ragtime_structure.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/docs/models.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/save/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/MusicGenerator-master/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/audio/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/audio/dont.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/audio/fade.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/audio/outdont.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/neuralaudiostyle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/plots/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/plots/spectrum.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/plotspecturum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Pop_Music_Midi_Chords/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Pop_Music_Midi_Chords/generated_chord_2.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Pop_Music_Midi_Chords/generated_chord_4.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Pop_Music_Midi_Chords/generated_chord_7.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Pop_Music_Midi_Chords/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Rock_Music_Midi_Chords/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Rock_Music_Midi_Chords/generated_chord_1.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Rock_Music_Midi_Chords/generated_chord_3.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Output_Chords/Rock_Music_Midi_Chords/generated_chord_6.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/All The Small Things - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/All The Small Things - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Around The World - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Around The World - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Baby I'm Yours - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Baby One More Time - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Baby One More Time - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Barbie Girl - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Barbie Girl - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Beautiful Life - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Beautiful Life - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Beautiful Life - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Best Day Of My Life - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Blank Space - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Blank Space - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Blank Space - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/California Gurls - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/California Gurls - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/California Gurls - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Call Me Maybe - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Can You Feel the Love Tonight - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Can You Feel the Love Tonight - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Chasing Pavements - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Clocks - Intro.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Clocks - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Dancing Queen - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Dancing Queen - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Dark Horse - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Dark Horse - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Die Young - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Die Young - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Don't Trust Me - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Every Time We Touch - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Every Time We Touch - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Everybody - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Ex's And Oh's - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Feel So Close - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Feel So Close - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Fix You - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Fix You - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Genie In A Bottle - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Genie in a Bottle - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Girl On Fire - Bridge.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Girl On Fire - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Girl On Fire - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Girl On Fire - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Hot N Cold - Bridge.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Hot N Cold - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Hot N Cold - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/How Deep Is Your Love - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Gotta Feeling - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Kissed A Girl - Bridge.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Kissed A Girl - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Kissed A Girl - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Miss You - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Miss You - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Need Your Love - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Need Your Love - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/I Want It That Way - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Irreplaceable - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Let's Dance - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Let's Go - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Locked Out Of Heaven - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Locked Out Of Heaven - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Locked Out Of Heaven - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Love Me Harder ft The Weeknd - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Love Me Harder ft The Weeknd - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Love Me Harder ft The Weeknd - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Love Story - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Love Story - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Mr Saxobeat - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Outside feat Ellie Goulding - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Piano Man - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Piano Man - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Piano man - Bridge.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Pompeii - Bridge.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Pompeii - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Pompeii - Intro.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Pompeii - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Put Your Records On - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Put Your Records On - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Roar - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Roar - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Roar - Verse.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Rock That Body - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Rolling In The Deep - Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Rolling In The Deep - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/Pop_Music_Midi/Say My Name - Pre Chorus.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/__pycache__/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_0.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_5.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_6.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_7.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_8.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp3/generated_chord_9.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_0.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_1.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_2.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_3.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_4.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_5.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_6.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_7.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_8.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/converted_mp4/generated_chord_9.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_0.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_1.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_2.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_3.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_4.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_5.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_6.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_7.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_8.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/generated_chord_9.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/mix_11s (audio-joiner.com).mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/mix_11s_audio_joiner.com_.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/demo_output/mix_16s (audio-joiner.com).mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/midi_manipulation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/music.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_0.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_1.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_2.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_3.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_4.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_5.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_6.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_7.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_8.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/out/generated_chord_9.midi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/rbm_chords.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Git_Repos/tensorflow-music-generator/requirments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Keras_Testing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Magenta_Testing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/events.out.tfevents.1541967365.stu-170-151-171-184.champlain.edu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/events.out.tfevents.1541967485.stu-170-151-171-184.champlain.edu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/model.ckpt-0.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/model.ckpt-0.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/Run_Dird/train/model.ckpt-0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/attention_rnn.mag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/basic_rnn.mag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_01.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_02.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_03.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_04.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_05.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_06.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_07.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_08.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_09.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/2018-11-11_183045_10.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/generated/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/lookback_rnn.mag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/notesequences.tfrecord" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/sequence_examples/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/sequence_examples/Run_Dir/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/sequence_examples/eval_melodies.tfrecord" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Magenta/sequence_examples/training_melodies.tfrecord" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/SMS_Test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Tensorflow/Icon&#13;" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Tensorflow/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Tensorflow/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/Untitled.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Erics_Playground/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/RNN_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Models/Categorical_LSTM_Model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Dump/Models/Categorical_LSTM_Model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/LSTM_Generation/__pycache__/Icon&#13;" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/RNN_Generation/__pycache__/Icon&#13;" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared_Files/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared_Files/Global_Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Global_Util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,34 +509,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/LyreBird$Midi_Pre_Processor.coverage" NAME="Midi_Pre_Processor Coverage Results" MODIFIED="1545426173979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Pre_Production" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Constants.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="46" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LSTM_Muisc_generator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="14" column="12" selection-start-line="14" selection-end-line="14" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Categorical_Notes_Model_Train.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="100" column="64" selection-start-line="100" selection-start-column="46" selection-end-line="100" selection-end-column="64" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" column="48" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -48,8 +526,8 @@
       <file leaf-file-name="Global_Util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+            <state relative-caret-position="258">
+              <caret line="24" selection-start-line="24" selection-end-line="27" selection-end-column="23" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -69,11 +547,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Note_Encoder_and_Tracking.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
+      <file leaf-file-name="Midi_Pre_Processor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1758">
-              <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+            <state relative-caret-position="-1584">
+              <caret line="99" column="24" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -81,11 +559,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Trainer_Controller.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+      <file leaf-file-name="Custom_Exception.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Shared_Files/Custom_Exception.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state>
+              <caret column="24" selection-start-column="6" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trainer_Controller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Categorical_Notes_Model_Train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="29" column="68" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="68" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,19 +600,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>NUM_TRAIN_FILES</find>
-      <find>CATEGORICAL_MODEL_GENERATION</find>
-      <find>model_name</find>
-      <find>DATA_DUMP</find>
-      <find>LSTM_MODELS_PATH</find>
-      <find>shelve</find>
-      <find>genre_name</find>
-      <find>DATA_DUMP_PATH</find>
-      <find>model_accur_shelf</find>
-      <find>genre_tone_dict</find>
-      <find>note</find>
-      <find>max_accur</find>
-      <find>model_accur_shelf[&quot;model_accur_by_genre&quot;]</find>
       <find>genre_notes</find>
       <find>midi</find>
       <find>master_note_encoder</find>
@@ -124,13 +610,26 @@
       <find>i</find>
       <find>foca</find>
       <find>train_files</find>
-      <find>LSTM_DATA_DUMP_PATH</find>
-      <find>extract_genre_name_from_dir</find>
-      <find>(TRAINING_DATASET_PTH.split('/', -1)[-1]).replace('_Midi','')</find>
       <find>full_genre_song_count</find>
       <find>full_genre_file_count</find>
-      <find>focal_loss_fixed</find>
+      <find>extract_genre_name_from_dir</find>
       <find>pbar</find>
+      <find>song_count</find>
+      <find>file_note_count_dict</find>
+      <find>all_genre_note_counter</find>
+      <find>all_train_datasets_paths</find>
+      <find />
+      <find>all_genre_file_note_count_dict:</find>
+      <find>__total_file_count</find>
+      <find>LSTM_DATA_DUMP_PATH</find>
+      <find>__master_note_encoder</find>
+      <find>focal_loss_fixed</find>
+      <find>os</find>
+      <find>find_closest_sum</find>
+      <find>closest_note_count = find_nearest(note_count_file_list, needed_valadation_note_count)</find>
+      <find>__thread_pool_datasets_reader</find>
+      <find>self.__blacklist_files_validation</find>
+      <find>ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,7 +661,6 @@
         <option value="$PROJECT_DIR$/Backend_Production/LSTM_Generation/Trainer_Controller_Basic_LSTM.py" />
         <option value="$PROJECT_DIR$/Backend_Production/LSTM_Generation/Basic_LSTM_Model_Trainer.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Global_Util.py" />
-        <option value="$PROJECT_DIR$/Pre_Production/Note_Encoder_and_Tracking.py" />
         <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Model_Generation/Note_Encoder_and_Tracking.py" />
         <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Basic_LSTM_Model_Trainer.py" />
         <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Basic_LSTM_Model_Trainer.py" />
@@ -172,10 +670,15 @@
         <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py" />
         <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/focal_loss.py" />
         <option value="$PROJECT_DIR$/Shared_Files/Focal_Loss.py" />
-        <option value="$PROJECT_DIR$/Shared_Files/Constants.py" />
-        <option value="$PROJECT_DIR$/Shared_Files/Global_Util.py" />
-        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" />
         <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Note_Encoder_and_Tracking.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Preprocessing_Obj.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Constants.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Pre_Processing_Obj.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Custom_Exception.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Global_Util.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" />
       </list>
     </option>
   </component>
@@ -188,10 +691,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="183" />
-    <option name="y" value="84" />
-    <option name="width" value="1621" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="69" />
+    <option name="y" value="28" />
+    <option name="width" value="1611" />
     <option name="height" value="942" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -210,30 +713,12 @@
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Datasets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Main_Production" type="462c0819:PsiDirectoryNode" />
+              <item name="Data_Dump" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
               <item name="Pre_Production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Pre_Production" type="462c0819:PsiDirectoryNode" />
-              <item name="LSTM_Generation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Pre_Production" type="462c0819:PsiDirectoryNode" />
-              <item name="LSTM_Generation" type="462c0819:PsiDirectoryNode" />
-              <item name="Catgorical_Note_Model_Generation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
@@ -248,7 +733,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/ericcacciavillani/Desktop/Coding/Python_Files/Artificial_Intelligence/LyreBird/Shared_Files/Focal_Loss.py" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/ericcacciavillani/Desktop/Coding/Python_Files/Artificial_Intelligence/LyreBird/Shared_Files/Custom_Exception.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -263,11 +748,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Datasets" />
       <recent name="$PROJECT_DIR$/Shared_Files" />
-      <recent name="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation" />
+      <recent name="$PROJECT_DIR$/Data_Dump" />
+      <recent name="$PROJECT_DIR$/Pre_Production" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Pre_Production/LSTM_Generation" />
-      <recent name="$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Model_Generation" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Erics_Playground/Main_Production" />
@@ -285,6 +770,32 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Midi_Pre_Processor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LyreBird" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pre_Production" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Midi_Pre_Processor" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -299,24 +810,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="69" y="28" width="1611" height="942" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="8" visible="true" weight="0.26853707" />
+      <window_info anchor="bottom" id="File Transfer" order="8" visible="true" weight="0.26843318" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32949308" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24821429" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2582247" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39976957" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.3032213" />
@@ -324,7 +834,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286385" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32765532" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,10 +845,71 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Custom_Exception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="29" column="68" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3375">
+          <caret line="235" lean-forward="true" selection-start-line="235" selection-end-line="235" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -346,24 +917,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="31" selection-end-line="6" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Note_Encoder_and_Tracking.py" />
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
@@ -397,14 +959,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="98" column="44" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py" />
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2340">
           <caret line="167" column="19" lean-forward="true" selection-start-line="167" selection-start-column="19" selection-end-line="167" selection-end-column="19" />
@@ -414,17 +970,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Note_Encoder_and_Tracking.py" />
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
@@ -458,14 +1005,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="98" column="44" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py" />
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2370">
           <caret line="158" column="62" lean-forward="true" selection-start-line="158" selection-start-column="62" selection-end-line="158" selection-end-column="62" />
@@ -475,80 +1016,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/neuralaudiostyle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="105" column="8" lean-forward="true" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py" />
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/neuralaudiostyle.py" />
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.ipynb" />
     <entry file="file://$PROJECT_DIR$/testing.py" />
     <entry file="file://$PROJECT_DIR$/testing.py" />
     <entry file="file://$PROJECT_DIR$/testing.py" />
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Untitled.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Untitled.ipynb" />
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.ipynb" />
     <entry file="file://$PROJECT_DIR$/Erics_Playground/Main_Production/Music Composition.py" />
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/neuralaudiostyle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1841">
-          <caret line="130" selection-start-line="130" selection-end-line="138" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Keras_Testing.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/neuralsongstyle-master/neuralaudiostyle.py" />
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Keras_Testing.py" />
     <entry file="file://$PROJECT_DIR$/Research/ResearchLinks.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/SMS_Test.py" />
     <entry file="file://$USER_HOME$/Downloads/focal-loss-keras-master/focal_loss.py" />
-    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="98" column="44" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Trainer_Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Erics_Playground/Git_Repos/Keras-Music-Generation-master/Music Composition.py" />
     <entry file="file://$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -556,30 +1040,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Note_Encoder_and_Tracking.py" />
+    <entry file="file://$PROJECT_DIR$/Shared_Files/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/remote_sources/-129902491/-795393478/tokenize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="46" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="46" />
+        <state relative-caret-position="165">
+          <caret line="451" selection-start-line="451" selection-end-line="451" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Catgorical_Note_Model_Generation/Categorical_Notes_Model_Train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="100" column="64" selection-start-line="100" selection-start-column="46" selection-end-line="100" selection-end-column="64" />
+        <state relative-caret-position="255">
+          <caret line="29" column="68" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="68" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -593,10 +1078,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/LSTM_Generation/Catgorical_Note_Model_Generation/Note_Encoder_and_Tracking.py">
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1758">
-          <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+        <state relative-caret-position="258">
+          <caret line="24" selection-start-line="24" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Custom_Exception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/RNN_Generation/Trainer_Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1584">
+          <caret line="99" column="24" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
