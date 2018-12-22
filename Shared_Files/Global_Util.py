@@ -18,7 +18,7 @@ def send_sms_to_me(message="You forget to add a messag!"):
 
 def display_options_menu(menu_intro="", menu_options={}):
     print(menu_intro)
-    for input_option, text in menu_options:
+    for input_option, text in menu_options.items():
         print("\t*{0} {1}".format(input_option, text))
 
 
