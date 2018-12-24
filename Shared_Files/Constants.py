@@ -10,8 +10,8 @@ def enum(**enums):
 ABS_PATHS = enum(PROJECT_ABSOLUTE_PATH=__PROJECT_ABSOLUTE_PATH,
                  TRAINING_DATASET_DIRECTORY_PATH=__PROJECT_ABSOLUTE_PATH + "/Datasets/",
                  DATA_DUMP_PATH=__PROJECT_ABSOLUTE_PATH + "/Data_Dump/",
-                 MODELS_PATH=__PROJECT_ABSOLUTE_PATH + "/Data_Dump/Models/",
-                 SHELVES_PATH="/Data_Dump/Shelves")
+                 SAVED_MODELS_PATH=__PROJECT_ABSOLUTE_PATH + "/Data_Dump/Saved_Models/",
+                 SHELVES_PATH=__PROJECT_ABSOLUTE_PATH + "/Data_Dump/Shelves/")
 
 # Set path directory
 MIDI_CONSTANTS = enum(INPUT_SEQUENCE_LEN=50,
