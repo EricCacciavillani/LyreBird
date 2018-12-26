@@ -1,5 +1,4 @@
-from music21 import converter, note, chord
-from music21.midi import MidiException
+from music21 import converter, note, chord, instrument
 import glob
 import os
 import copy
@@ -21,7 +20,6 @@ from Shared_Files.Constants import *
 class MidiPreProcessor:
 
     def __init__(self, path_to_full_data_set,
-                 validation_set=True,
                  genre_sub_sample_set=1000
                  ):
 
@@ -102,10 +100,9 @@ class MidiPreProcessor:
                                  menu_options={1: "Delete all corrupted files",
                                                2: "Ignore"})
             user_input = input("\nInput: ")
-            user_input = int(user_input)
 
             # Remove corrupted files
-            if user_input == 1:
+            if user_input == "1":
                 self.delete_corrupted_files()
             else:
                 pass
@@ -130,10 +127,9 @@ class MidiPreProcessor:
                                  menu_options={1: "Delete all small files",
                                                2: "Ignore"})
             user_input = input("\nInput: ")
-            user_input = int(user_input)
 
             # Remove small files
-            if user_input == 1:
+            if user_input == "1":
                 self.delete_small_files()
             else:
                 pass
@@ -147,10 +143,8 @@ class MidiPreProcessor:
         self.__master_note_decoder = {v: k for k, v
                                       in self.__master_note_encoder.items()}
 
-        # Mark files for validation set
-        if validation_set:
-            # Marks files to be selected for valadation
-            self.__generate_validation_files()
+        # Marks files to be selected for valadation
+        self.__generate_validation_files()
 
     def return_core_atributes(self):
 
@@ -216,8 +210,9 @@ class MidiPreProcessor:
         """
             Extract out the notes of the midi file.
         """
-
+        print(file)
         song_notes = []
+        instruments = []
 
         # Attempt to parse midi file
         try:
@@ -229,16 +224,28 @@ class MidiPreProcessor:
                     "small_file_check": False,
                     "corrupted": True}
 
-        # Use the first track on the midi file (Multiple ones)
-        midi = midi[MIDI_CONSTANTS.TRACK_INDEX]
+        for p in midi.parts:
+            p.insert(0, instrument.Violin())
+            print(p.storedInstrument)
+        return -1
 
-        # Parse the midi file by the notes it contains
-        notes_to_parse = midi.flat.notes
+        # # Use the first track on the midi file (Multiple ones)
+        # midi = midi[MIDI_CONSTANTS.TRACK_INDEX]
+        #
+        # # Parse the midi file by the notes it contains
+        #
+        # try:  # file has instrument parts
+        #     s2 = instrument.partitionByInstrument(midi)
+        #     notes_to_parse = s2.parts[0].recurse()
+        # except:  # file has notes in a flat structure
+        #     notes_to_parse = midi.flat.notes
 
         # Convert and append notes to our list; store tone count
         for element in notes_to_parse:
+            print(element.parts)
 
             if isinstance(element, note.Note):
+
                 tone = str(element.pitch)
                 song_notes.append(tone)
 
@@ -342,18 +349,19 @@ class MidiPreProcessor:
                 note_count_file_list.remove(closest_file_note_count)
 
     def train_test_split(self,
-                         target_genre_name=False):
+                         target_genre_name=False,
+                         validation_set_required=True):
         """
             Returns back a training set and test set based on the input
             sizes of the models.
         """
 
         # Init train/test; input/output for models
-        train_note_sequences = np.zeros(MIDI_CONSTANTS.INPUT_SEQUENCE_LEN)
-        train_output = np.zeros(1)
+        train_note_sequences = []
+        train_output = []
 
-        test_note_sequences = np.zeros(MIDI_CONSTANTS.INPUT_SEQUENCE_LEN)
-        test_output = np.zeros(1)
+        test_note_sequences = []
+        test_output = []
 
         # Iterate through given genres and associated meta data on each file
         for genre_name, file_dict in self.__all_genre_file_notes_dict.items():
@@ -367,59 +375,126 @@ class MidiPreProcessor:
                 # Eliminate sequences that are under the input
                 for i in range(0, len(encoded_notes) + 1,
                                MIDI_CONSTANTS.INPUT_SEQUENCE_LEN):
-                    note_sequence = np.array(encoded_notes[
-                                             i: i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
+                    note_sequence = encoded_notes[i: i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN]
 
                     if len(note_sequence) == MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
 
                         try:
 
                             # Validation file found
-                            if file_path in self.__blacklisted_files_validation:
+                            if validation_set_required and file_path in self.__blacklisted_files_validation:
 
                                 # Target is genre
                                 if target_genre_name:
-                                    test_output = np.append(test_output,
-                                                            self.__master_genre_encoder[genre_name])
+                                    test_output.append(self.__master_genre_encoder[genre_name])
                                 # Target is a note
                                 else:
-                                    test_output = np.append(
-                                        test_output,
-                                        encoded_notes[i + 50])
+                                    test_output.append(encoded_notes[i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
 
-                                test_note_sequences = np.vstack(
-                                    (test_note_sequences,
-                                     note_sequence))
+                                test_note_sequences.append(note_sequence)
 
                             # Must be a training file
                             else:
 
                                 # Target is genre
                                 if target_genre_name:
-                                    train_output = np.append(train_output,
-                                                             self.__master_genre_encoder[
-                                                                 genre_name])
+                                    train_output.append(self.__master_genre_encoder[genre_name])
                                 # Target is a note
                                 else:
-                                    train_output = np.append(
-                                        train_output,
-                                        encoded_notes[i + 50])
+                                    train_output.append(encoded_notes[i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
 
-                                train_note_sequences = np.vstack(
-                                    (train_note_sequences,
-                                     note_sequence))
+                                train_note_sequences.append(note_sequence)
 
-                        # Input sequence was 50 but
+                        # Input sequence was above but
                         except IndexError:
                             continue
                     else:
                         break
 
-        # Get rid of dummy holder of zeros in beginning for init shape
-        train_output = np.delete(train_output, 0, axis=0)
-        train_note_sequences = np.delete(train_note_sequences, 0, axis=0)
-
-        test_output = np.delete(test_output, 0, axis=0)
-        test_note_sequences = np.delete(test_note_sequences, 0, axis=0)
-
         return train_note_sequences, train_output, test_note_sequences, test_output
+
+
+
+
+def read_midi_file_by_note(file):
+    """
+        Extract out the notes of the midi file.
+    """
+
+    song_notes = []
+    instruments = []
+
+    # Attempt to parse midi file
+    try:
+        midi = converter.parse(file)
+    except:
+        # Midi file couldn't be opened
+        return {"song_notes": [],
+                "note_count": [],
+                "small_file_check": False,
+                "corrupted": True}
+
+    test = set()
+    for stream_part in midi.parts:
+        s2 = instrument.partitionByInstrument(stream_part)
+        if s2:
+            for i in s2.recurse().parts:
+                print(i)
+                test.add(i.getInstrument())
+            # print(s2.parts)
+            # print(s2.storedInstrument)
+        #
+    print(test)
+        # if stream_part.getInstrument(returnDefault=False) is not None:
+        #     if stream_part.partName != "Voice":
+        #         print(stream_part.partName)
+        #         print(type(stream_part))
+            # for test in stream_part:
+            #     print(test)
+
+    # for stream in midi.parts:
+    #     print(stream.getInstrument(returnDefault=False).instrumentName)
+    #     s2 = instrument.partitionByInstrument(stream)
+    #
+    #     if s2:
+    #         s2.measures(1, 4).show('text', addEndTimes=True)
+    #         print(s2.getInstrument(returnDefault=False).instrumentName)
+
+    return -1
+
+    # Parse the midi file by the notes it contains
+
+    # try:  # file has instrument parts
+    #     s2 = instrument.partitionByInstrument(midi)
+    #     notes_to_parse = s2.parts[0].recurse()
+    # except:  # file has notes in a flat structure
+    #     notes_to_parse = midi.flat.notes
+
+    # Convert and append notes to our list; store tone count
+    for element in notes_to_parse:
+        print(element.parts)
+
+        if isinstance(element, note.Note):
+
+            tone = str(element.pitch)
+            song_notes.append(tone)
+
+        elif isinstance(element, chord.Chord):
+
+            # Get the numerical representation
+            tone = '.'.join(str(n) for n in element.normalOrder)
+            song_notes.append(tone)
+
+    song_notes_len = len(song_notes)
+    if song_notes_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
+        return {"song_notes": song_notes,
+                "note_count": song_notes_len,
+                "small_file_check": True,
+                "corrupted": False}
+
+    return {"song_notes": song_notes,
+            "note_count": song_notes_len,
+            "small_file_check": False,
+            "corrupted": False}
+
+read_midi_file_by_note("/home/eric/Desktop/LyreBird/Datasets/Rock_Music_Midi/Hocus Pocus (Focus) -.mid")
