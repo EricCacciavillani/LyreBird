@@ -1,4 +1,4 @@
-from music21 import converter, note, chord, instrument
+import pretty_midi
 import glob
 import os
 import copy
@@ -9,6 +9,10 @@ from tqdm import tqdm
 # Import shared files
 import sys
 sys.path.append('..')
+
+import warnings
+warnings.filterwarnings("ignore")
+
 from Shared_Files.Global_Util import *
 from Shared_Files.Constants import *
 
@@ -20,76 +24,115 @@ from Shared_Files.Constants import *
 class MidiPreProcessor:
 
     def __init__(self, path_to_full_data_set,
-                 genre_sub_sample_set=1000
-                 ):
+                 genre_sub_sample_set=sys.maxsize):
 
         # Progress-bar for threading-pool
         self.__pbar = None
 
-        # Store all individual tones found
-        self.__all_possible_notes = set()
-        self.__all_possible_notes_counter = Counter()
+        # ---
+        self.__all_possible_instr_note_pairs = set()
+        self.__all_possible_instr_note_pairs_counter = Counter()
+        self.__all_instruments = set()
 
         # Files to ignore for when splicing data into train/test
         self.__blacklisted_files_validation = set()
 
         # Stores all genres to another dict that stores
         # the corresponding file note size
-        self.__all_genre_file_notes_dict = dict()
+        self.__genre_file_dict = dict()
 
-        # Stores the genre names with all possible note and associated counts
-        self.__all_genre_note_counters = dict()
+        self.__genre_instr_note_counters = dict()
 
         # Stores all corrupted files found
-        self.__found_corrupted_file_paths = []
+        self.__corrupted_files_paths = []
 
         # Store files that are to small (Determined by the input sequence)
         self.__small_files_paths = []
 
-        # Encoders for notes and genre names
-        self.__master_note_encoder = dict()
-        self.__master_note_decoder = dict()
+        # Init encoders and decoders
+        self.__master_instr_note_encoder = dict()
+        self.__master_instr_note_decoder = dict()
+
+        self.__master_instr_encoder = dict()
+        self.__master_instr_decoder = dict()
 
         self.__master_genre_encoder = dict()
         self.__master_genre_decoder = dict()
+        # ---------------------------------
 
-        # ---
+        # Numeric counts
         self.__total_file_count = 0
-        self.__total_note_count = 0
+        self.__total_intr_note_pair_size = 0
 
         # Thread pool out reading multiple files of each dataset
         thread_pool_results = self.__thread_pool_datasets_reader(
             self.__genre_dataset_init, path_to_full_data_set, genre_sub_sample_set)
 
-        # Init data based on thread pool results
+        # Init all data based on thread pool results
         for genre_count, genre_dataset_result in enumerate(thread_pool_results):
 
-            self.__all_genre_file_notes_dict = {**self.__all_genre_file_notes_dict,
-                                                **genre_dataset_result["genre_files_notes_dict"]}
-            self.__found_corrupted_file_paths += genre_dataset_result["corrupted_files"]
+            # Add to set of all instr/note pairs
+            self.__all_possible_instr_note_pairs |= genre_dataset_result["genre_instr_note_pairs"]
+
+            # Add to set of all instruments
+            self.__all_instruments |= genre_dataset_result["genre_instruments"]
+
+            # Numeric value of non-unique total instr/note pairs
+            self.__total_intr_note_pair_size += genre_dataset_result[
+                "genre_size"]
+
+            # Store files based on the genre of songs
+            self.__genre_file_dict = {**self.__genre_file_dict,
+                                      **genre_dataset_result["genre_file_meta_data"]}
+
+            # Store counter object based on genre
+            self.__genre_instr_note_counters[genre_dataset_result[
+                "genre_name"]] = genre_dataset_result["genre_instr_note_pairs_counter"]
+
+            # Counter object of all possible instr/note
+            self.__all_possible_instr_note_pairs_counter += genre_dataset_result["genre_instr_note_pairs_counter"]
+
+            # ---
+            self.__corrupted_files_paths += genre_dataset_result[
+                "corrupted_files"]
             self.__small_files_paths += genre_dataset_result["small_files"]
-            self.__all_genre_note_counters = {**self.__all_genre_note_counters,
-                                              **genre_dataset_result[
-                                                  "genre_note_counter"]}
 
-            self.__all_possible_notes_counter += genre_dataset_result["genre_note_counter"][
-                genre_dataset_result["genre_name"]]
-            self.__total_note_count += genre_dataset_result["total_genre_notes"]
+        # Sort all data before encoding for my own sanity
+        self.__all_possible_instr_note_pairs = sorted(
+            self.__all_possible_instr_note_pairs)
+        self.__all_instruments = sorted(self.__all_instruments)
 
-            self.__master_genre_encoder[genre_dataset_result["genre_name"]] = \
-                genre_count + 1
+        # Begin creating label encoders and decoders
+        for label, (genre, _) in enumerate(
+                self.__genre_instr_note_counters.items()):
+            self.__master_genre_encoder[genre] = label + 1
 
-        # Invert encoder dict
         self.__master_genre_decoder = {v: k for k, v
                                        in self.__master_genre_encoder.items()}
-        self.__all_possible_notes = sorted(set(self.__all_possible_notes_counter.keys()))
+        # -----
+        for label, instr_note_pair in enumerate(
+                self.__all_possible_instr_note_pairs):
+            self.__master_instr_note_encoder[instr_note_pair] = label + 1
+
+        self.__master_instr_note_decoder = {v: k for k, v
+                                            in
+                                            self.__master_instr_note_encoder.items()}
+        # -----
+
+        for label, instr in enumerate(
+                self.__all_instruments):
+            self.__master_instr_encoder[instr] = label + 1
+
+        self.__master_instr_decoder = {v: k for k, v
+                                       in self.__master_instr_encoder.items()}
+        # -------------------------------------
 
         # Corrupted files were found.
-        if self.__found_corrupted_file_paths:
+        if self.__corrupted_files_paths:
 
-            print("The Pre Processor found {0}".format(len(self.__found_corrupted_file_paths)))
+            print("The Pre Processor found {0}".format(len(self.__corrupted_files_paths)))
             print("Displaying all corrupted songs:\n")
-            for song in self.__found_corrupted_file_paths:
+            for song in self.__corrupted_files_paths:
                 print("\t", song.split("/", 6)[-1])
             print()
 
@@ -106,6 +149,7 @@ class MidiPreProcessor:
                 self.delete_corrupted_files()
             else:
                 pass
+        # ---------------------------------------------
 
         # Small files were found.
         if self.__small_files_paths:
@@ -133,37 +177,31 @@ class MidiPreProcessor:
                 self.delete_small_files()
             else:
                 pass
+        # ---------------------------------------------
 
-        # Encode dict for nodes
-        self.__master_note_encoder = dict()
-        for i, tone in enumerate(self.__all_possible_notes):
-            self.__master_note_encoder[tone] = i + 1
-
-        # Decode dict for nodes
-        self.__master_note_decoder = {v: k for k, v
-                                      in self.__master_note_encoder.items()}
-
-        # Marks files to be selected for valadation
+        # Marks files to be selected for validation
         self.__generate_validation_files()
 
     def return_core_atributes(self):
+        return {"all_possible_instr_note_pairs": copy.deepcopy(self.__all_possible_instr_note_pairs),
+                "all_possible_instr_note_pairs_counter": copy.deepcopy(self.__all_possible_instr_note_pairs_counter),
+                "all_instruments": copy.deepcopy(self.__all_instruments),
 
-        return {"all_possible_notes": copy.deepcopy(
-            self.__all_possible_notes),
-            "all_possible_notes_counter": copy.deepcopy(
-                self.__all_possible_notes_counter),
-            "blacklisted_files_validation": copy.deepcopy(
-                self.__blacklisted_files_validation),
-            "all_genre_file_notes_dict": copy.deepcopy(
-                self.__all_genre_file_notes_dict),
-            "all_genre_note_counters": copy.deepcopy(
-                self.__all_genre_note_counters),
-            "found_corrupted_file_paths": copy.deepcopy(
-                self.__found_corrupted_file_paths),
-            "total_file_count": copy.deepcopy(self.__total_file_count),
-            "total_note_count": copy.deepcopy(self.__total_note_count),
-            "master_note_decoder": copy.deepcopy(self.__master_note_decoder),
-            "master_note_encoder": copy.deepcopy(self.__master_note_encoder)}
+                "blacklisted_files_validation": copy.deepcopy(self.__blacklisted_files_validation),
+                "genre_file_dict": copy.deepcopy(self.__genre_file_dict),
+                "genre_instr_note_counters": copy.deepcopy(self.__genre_instr_note_counters),
+
+                "corrupted_files_paths": copy.deepcopy(self.__corrupted_files_paths),
+                "small_files_paths": copy.deepcopy(self.__small_files_paths),
+
+                "master_instr_note_encoder": copy.deepcopy(self.__master_instr_note_encoder),
+                "master_instr_note_decoder": copy.deepcopy(self.__master_instr_note_decoder),
+
+                "master_instr_encoder": copy.deepcopy(self.__master_instr_encoder),
+                "master_instr_decoder": copy.deepcopy(self.__master_instr_decoder),
+
+                "master_genre_encoder": copy.deepcopy(self.__master_genre_encoder),
+                "master_genre_decoder": copy.deepcopy(self.__master_genre_decoder),}
 
     def __thread_pool_datasets_reader(self, func,
                                       path_to_full_data_set,
@@ -206,64 +244,57 @@ class MidiPreProcessor:
 
         return all_results
 
-    def read_midi_file_by_note(self, file):
+    def read_midi_file(self, file):
         """
-            Extract out the notes of the midi file.
+            Extract out the instruments/notes of the midi file.
         """
-        print(file)
-        song_notes = []
-        instruments = []
-
         # Attempt to parse midi file
         try:
-            midi = converter.parse(file)
+            midi_data = pretty_midi.PrettyMIDI(file)
+
+        # Midi file couldn't be opened; Raise flag; return dummy dict
         except:
-            # Midi file couldn't be opened
-            return {"song_notes": [],
-                    "note_count": [],
+            return {"flat_instr_note_seq": [],
+                    "flat_instr_note_seq_len": 0,
+                    "instruments": {},
                     "small_file_check": False,
                     "corrupted": True}
 
-        for p in midi.parts:
-            p.insert(0, instrument.Violin())
-            print(p.storedInstrument)
-        return -1
+        # Stores instrument note pair
+        flat_instr_note_seq = []
 
-        # # Use the first track on the midi file (Multiple ones)
-        # midi = midi[MIDI_CONSTANTS.TRACK_INDEX]
-        #
-        # # Parse the midi file by the notes it contains
-        #
-        # try:  # file has instrument parts
-        #     s2 = instrument.partitionByInstrument(midi)
-        #     notes_to_parse = s2.parts[0].recurse()
-        # except:  # file has notes in a flat structure
-        #     notes_to_parse = midi.flat.notes
+        # Move through midi file; store data on instrument/note relationship
+        for instr in midi_data.instruments:
 
-        # Convert and append notes to our list; store tone count
-        for element in notes_to_parse:
-            print(element.parts)
+            for note_obj in instr.notes:
+                flat_instr_note_seq.append(
+                    (instr.name + INSTRUMENT_NOTE_SPLITTER.STR +
+                     pretty_midi.note_number_to_name(note_obj.pitch),
+                     note_obj))
 
-            if isinstance(element, note.Note):
+        # ---
 
-                tone = str(element.pitch)
-                song_notes.append(tone)
+        flat_instr_note_seq_len = len(flat_instr_note_seq)
 
-            elif isinstance(element, chord.Chord):
-
-                # Get the numerical representation
-                tone = '.'.join(str(n) for n in element.normalOrder)
-                song_notes.append(tone)
-
-        song_notes_len = len(song_notes)
-        if song_notes_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
-            return {"song_notes": song_notes,
-                    "note_count": song_notes_len,
+        # File is to small for our neural networks to take; Raise flag;
+        if flat_instr_note_seq_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
+            return {"flat_instr_note_seq": flat_instr_note_seq,
+                    "flat_instr_note_seq_len": flat_instr_note_seq_len,
+                    "instruments": {instr.name for instr
+                                    in midi_data.instruments},
                     "small_file_check": True,
                     "corrupted": False}
 
-        return {"song_notes": song_notes,
-                "note_count": song_notes_len,
+        # Sort notes in proper sequence based on their starting and end points
+        flat_instr_note_seq.sort(key=lambda tup: (tup[1].start, tup[1].end))
+        flat_instr_note_seq = [instr_note[0] for instr_note in
+                              flat_instr_note_seq]
+
+        # Return dict for more explict multi return type
+        return {"flat_instr_note_seq": flat_instr_note_seq,
+                "flat_instr_note_seq_len": flat_instr_note_seq_len,
+                "instruments": set([instr.name for instr
+                                    in midi_data.instruments]),
                 "small_file_check": False,
                 "corrupted": False}
 
@@ -272,40 +303,69 @@ class MidiPreProcessor:
             Init full dataset attributes on MidiPreProcessor init
         """
 
-        all_genre_notes = []
-        file_note_count_dict = dict()
+        # Store meta data on file and genre specific data
+        genre_instr_note_pairs = set()
+        genre_instr_note_pairs_counter = Counter()
+        genre_instruments = set()
+        genre_file_meta_data = dict()
+        genre_size = 0
+
+        # Store invalid file paths
         corrupted_files = []
         small_files = []
 
-        genre_name = genre_train_files[0].split("/")[-2].replace('_Midi','')
+        genre_name = genre_train_files[0].split("/")[-2].replace('_Midi', '')
 
         for _, file in enumerate(genre_train_files):
 
+            # Update thread pool progress bar
             self.__pbar.update(1)
-            self.__pbar.set_postfix_str(s=file.split("/",-1)[-1][:20],
+            self.__pbar.set_postfix_str(s=file.split("/", -1)[-1][:20],
                                         refresh=True)
-            midi_file_attr = self.read_midi_file_by_note(file)
 
+            # Meta data on the file
+            midi_file_attr = self.read_midi_file(file)
+
+            # Check if flags were raised
             if midi_file_attr["corrupted"]:
                 corrupted_files.append(file)
             elif midi_file_attr["small_file_check"]:
                 small_files.append(file)
+
+            # File passed requirements; store meta data on genre and file
             else:
-                file_note_count_dict[file] = midi_file_attr["song_notes"]
-                all_genre_notes += midi_file_attr["song_notes"]
+
+                genre_instruments |= midi_file_attr["instruments"]
+                genre_instr_note_pairs |= set(
+                    midi_file_attr["flat_instr_note_seq"])
+                genre_size += midi_file_attr["flat_instr_note_seq_len"]
+
+                genre_file_meta_data[file] = {"flat_instr_note_seq":
+                                                  midi_file_attr[
+                                                      "flat_instr_note_seq"],
+                                              "flat_instr_note_seq_len":
+                                                  midi_file_attr[
+                                                      "flat_instr_note_seq_len"],
+                                              "instruments":
+                                                  midi_file_attr[
+                                                      "instruments"],}
+
+                genre_instr_note_pairs_counter += Counter(midi_file_attr["flat_instr_note_seq"])
 
         return {"genre_name": genre_name,
-                "genre_files_notes_dict": {genre_name: file_note_count_dict},
-                "genre_note_counter": {genre_name: Counter(all_genre_notes)},
+                "genre_size": genre_size,
+                "genre_instruments": genre_instruments,
+                "genre_instr_note_pairs": genre_instr_note_pairs,
+                "genre_instr_note_pairs_counter": genre_instr_note_pairs_counter,
+                "genre_file_meta_data": {genre_name: genre_file_meta_data},
                 "corrupted_files": corrupted_files,
-                "small_files": small_files,
-                "total_genre_notes": len(all_genre_notes)}
+                "small_files": small_files,}
 
     # Delete the unused files from personal directory
     def delete_corrupted_files(self):
-        for song in self.__found_corrupted_file_paths:
+        for song in self.__corrupted_files_paths:
             os.remove(song)
-        self.__found_corrupted_file_paths = []
+        self.__corrupted_files_paths = []
 
     def delete_small_files(self):
         for song in self.__small_files_paths:
@@ -320,15 +380,16 @@ class MidiPreProcessor:
         self.__blacklisted_files_validation = set()
 
         # Find files for best fit the for the validation set per genre
-        for genre_name, note_counter in self.__all_genre_note_counters.items():
+        for genre_name, instr_note_counter in self.__genre_instr_note_counters.items():
 
-            genre_note_count = sum(note_counter.values())
+            genre_note_count = sum(instr_note_counter.values())
             needed_validation_note_count = int(
-                (genre_note_count / self.__total_note_count) \
+                (genre_note_count / self.__total_intr_note_pair_size) \
                 * genre_note_count)
 
-            note_count_file_dict = {len(v): k for k, v
-                                    in self.__all_genre_file_notes_dict[
+            note_count_file_dict = {file_meta_data["flat_instr_note_seq_len"]: file_name
+                                    for file_name, file_meta_data
+                                    in self.__genre_file_dict[
                                         genre_name].items()}
 
             note_count_file_list = list(note_count_file_dict.keys())
@@ -364,12 +425,12 @@ class MidiPreProcessor:
         test_output = []
 
         # Iterate through given genres and associated meta data on each file
-        for genre_name, file_dict in self.__all_genre_file_notes_dict.items():
+        for genre_name, file_dict in self.__genre_file_dict.items():
 
-            for file_path, notes in file_dict.items():
+            for file_path, instr_note_seq in file_dict.items():
 
-                encoded_notes = [self.__master_note_encoder[tone] for tone
-                                 in notes]
+                encoded_notes = [self.__master_note_encoder[instr_note_pair]
+                                 for instr_note_pair in instr_note_seq]
 
                 # Iterate by the input sequence length for each note sequnce;
                 # Eliminate sequences that are under the input
@@ -412,89 +473,3 @@ class MidiPreProcessor:
                         break
 
         return train_note_sequences, train_output, test_note_sequences, test_output
-
-
-
-
-def read_midi_file_by_note(file):
-    """
-        Extract out the notes of the midi file.
-    """
-
-    song_notes = []
-    instruments = []
-
-    # Attempt to parse midi file
-    try:
-        midi = converter.parse(file)
-    except:
-        # Midi file couldn't be opened
-        return {"song_notes": [],
-                "note_count": [],
-                "small_file_check": False,
-                "corrupted": True}
-
-    test = set()
-    for stream_part in midi.parts:
-        s2 = instrument.partitionByInstrument(stream_part)
-        if s2:
-            for i in s2.recurse().parts:
-                print(i)
-                test.add(i.getInstrument())
-            # print(s2.parts)
-            # print(s2.storedInstrument)
-        #
-    print(test)
-        # if stream_part.getInstrument(returnDefault=False) is not None:
-        #     if stream_part.partName != "Voice":
-        #         print(stream_part.partName)
-        #         print(type(stream_part))
-            # for test in stream_part:
-            #     print(test)
-
-    # for stream in midi.parts:
-    #     print(stream.getInstrument(returnDefault=False).instrumentName)
-    #     s2 = instrument.partitionByInstrument(stream)
-    #
-    #     if s2:
-    #         s2.measures(1, 4).show('text', addEndTimes=True)
-    #         print(s2.getInstrument(returnDefault=False).instrumentName)
-
-    return -1
-
-    # Parse the midi file by the notes it contains
-
-    # try:  # file has instrument parts
-    #     s2 = instrument.partitionByInstrument(midi)
-    #     notes_to_parse = s2.parts[0].recurse()
-    # except:  # file has notes in a flat structure
-    #     notes_to_parse = midi.flat.notes
-
-    # Convert and append notes to our list; store tone count
-    for element in notes_to_parse:
-        print(element.parts)
-
-        if isinstance(element, note.Note):
-
-            tone = str(element.pitch)
-            song_notes.append(tone)
-
-        elif isinstance(element, chord.Chord):
-
-            # Get the numerical representation
-            tone = '.'.join(str(n) for n in element.normalOrder)
-            song_notes.append(tone)
-
-    song_notes_len = len(song_notes)
-    if song_notes_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
-        return {"song_notes": song_notes,
-                "note_count": song_notes_len,
-                "small_file_check": True,
-                "corrupted": False}
-
-    return {"song_notes": song_notes,
-            "note_count": song_notes_len,
-            "small_file_check": False,
-            "corrupted": False}
-
-read_midi_file_by_note("/home/eric/Desktop/LyreBird/Datasets/Rock_Music_Midi/Hocus Pocus (Focus) -.mid")
