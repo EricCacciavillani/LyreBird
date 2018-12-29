@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classical-Piano-Composer" beforeDir="false" afterPath="$PROJECT_DIR$/Classical-Piano-Composer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/Setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared_Files/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Constants.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +23,8 @@
       <file leaf-file-name="Constants.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="40" />
+            <state relative-caret-position="330">
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -29,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -37,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Setup.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+            <state relative-caret-position="270">
+              <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -64,7 +68,7 @@
       <file leaf-file-name="lstm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classical-Piano-Composer/lstm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="673">
               <caret line="117" column="27" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="27" />
               <folding>
                 <element signature="e#96#107#0" expanded="true" />
@@ -73,13 +77,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Midi_Pre_Processor.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Midi_Pre_Processor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="441" column="23" selection-start-line="441" selection-start-column="23" selection-end-line="441" selection-end-column="23" />
+            <state relative-caret-position="30">
+              <caret line="184" column="36" selection-start-line="184" selection-start-column="36" selection-end-line="184" selection-end-column="36" />
               <folding>
-                <element signature="e#0#54#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,36 +100,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>__all_genre_file_note_count_dict</find>
-      <find>all_genre_file_notes</find>
-      <find>__all_genre_file_notes</find>
-      <find>note</find>
-      <find>corrupted_files</find>
-      <find>TRACK_INDEX</find>
-      <find>sampled_genre_notes</find>
-      <find>small_file_check</find>
-      <find>INPUT_SEQUENCE_LEN</find>
-      <find>train</find>
-      <find>all_files_by_genre</find>
-      <find>__master_genre_encoder</find>
-      <find>self.__master_genre_encoder</find>
-      <find>self.__reg</find>
-      <find>__reg</find>
-      <find>master_genre</find>
-      <find>__regenerate_</find>
-      <find>genre_sub_sample_set</find>
-      <find>__thread_pool_datasets_reader</find>
-      <find>self.__blacklisted_files_validation.add</find>
-      <find>self.__blacklisted_files_validation</find>
-      <find>focal_loss_alpha</find>
-      <find>pitch</find>
-      <find>user</find>
-      <find>encoded_notes[i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN]</find>
-      <find>output_note</find>
-      <find>prepare_sequences</find>
-      <find>np_utils</find>
-      <find>validation_set</find>
+      <find>pair</find>
+      <find>__genre_instr_note_counter</find>
+      <find>__found</find>
+      <find>genre_instr_note_pair_counter</find>
+      <find>genre_file_meta_data</find>
+      <find>genre_instr_note_pairs_counter</find>
+      <find>genre_instr_note_pairs</find>
+      <find>genre_total_instr_notes</find>
+      <find>genre_numeric_instr_notes</find>
+      <find>sys.maxsize</find>
+      <find>read</find>
+      <find>read_midi_file_by_note</find>
+      <find>read_midi_file</find>
+      <find>genre_instruments.add(midi_file_attr[&quot;instruments&quot;])</find>
+      <find>midi_file_attr[&quot;instruments&quot;])</find>
+      <find>.add(</find>
+      <find>flat_instr_note_seq</find>
+      <find>genre_instruments += midi_file_attr[&quot;flat_instr_note_seq&quot;]</find>
+      <find>__all_possible_instr_note_counter</find>
+      <find>__master_instr_note_encoder</find>
+      <find>try</find>
+      <find>__master_note_encoder</find>
+      <find>__all_genre_note_counters</find>
+      <find>__total_note_count</find>
+      <find>__all_genre_file_notes_dict</find>
+      <find>__genre_instr_note_counters</find>
+      <find>__total_intr_note_pair_count</find>
       <find>MidiPreProcessor</find>
+      <find>print(</find>
+      <find>np_utils</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,15 +177,15 @@
         <option value="$PROJECT_DIR$/Pre_Production/Pre_Processing_Obj.py" />
         <option value="$PROJECT_DIR$/Shared_Files/Custom_Exception.py" />
         <option value="$PROJECT_DIR$/Shared_Files/Global_Util.py" />
-        <option value="$PROJECT_DIR$/Shared_Files/Constants.py" />
         <option value="$PROJECT_DIR$/Pre_Production/RNN_Generation/Pre_Production_Setup.py" />
         <option value="$PROJECT_DIR$/Pre_Production/RNN_Generation/Model_Structures.py" />
         <option value="$PROJECT_DIR$/Pre_Production/__init__.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Pre_Production_Setup.py" />
         <option value="$PROJECT_DIR$/Classical-Piano-Composer/lstm.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Model_Structures.py" />
-        <option value="$PROJECT_DIR$/Pre_Production/Setup.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Constants.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Setup.py" />
       </list>
     </option>
   </component>
@@ -195,7 +199,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="59" />
+    <option name="x" value="69" />
     <option name="y" value="23" />
     <option name="width" value="1611" />
     <option name="height" value="942" />
@@ -213,6 +217,22 @@
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
+              <item name="Data_Dump" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
+              <item name="Data_Dump" type="462c0819:PsiDirectoryNode" />
+              <item name="Saved_Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
+              <item name="Datasets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
@@ -313,7 +333,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="23" width="1611" height="942" extended-state="0" />
+    <frame x="69" y="23" width="1611" height="942" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -391,7 +412,7 @@
         <state relative-caret-position="3375">
           <caret line="235" lean-forward="true" selection-start-line="235" selection-end-line="235" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -572,29 +593,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classical-Piano-Composer/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="117" column="27" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="27" />
-          <folding>
-            <element signature="e#96#107#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -609,22 +620,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state relative-caret-position="30">
+          <caret line="184" column="36" selection-start-line="184" selection-start-column="36" selection-end-line="184" selection-end-column="36" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
+    <entry file="file://$PROJECT_DIR$/Classical-Piano-Composer/lstm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="441" column="23" selection-start-line="441" selection-start-column="23" selection-end-line="441" selection-end-column="23" />
+        <state relative-caret-position="673">
+          <caret line="117" column="27" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="27" />
           <folding>
-            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#96#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

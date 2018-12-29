@@ -17,5 +17,7 @@ ABS_PATHS = enum(PROJECT_ABSOLUTE_PATH=__PROJECT_ABSOLUTE_PATH,
 MIDI_CONSTANTS = enum(INPUT_SEQUENCE_LEN=50,
                       TRACK_INDEX=0)
 
+INSTRUMENT_NOTE_SPLITTER = enum(STR="-:-")
+
 # Init 'const' variables to be shared
 SECONDS_TO_COOL_GPU = 150
