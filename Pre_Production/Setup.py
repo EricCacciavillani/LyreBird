@@ -15,8 +15,8 @@ import pretty_midi
 pre_processor_obj = MidiPreProcessor(ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH,
                             genre_sub_sample_set=30)
 
-for k,v in pre_processor_obj.return_core_atributes().items():
-    if k == "all_instruments":
+test_dict = pre_processor_obj.return_core_atributes().items()
+    if test_dict["test_instr"]:
         for instr in v:
             if len(instr) > 2:
                 print(type(instr))
