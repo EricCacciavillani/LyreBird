@@ -28,6 +28,7 @@ class MidiPreProcessor:
 
         # Progress-bar for threading-pool
         self.__pbar = None
+        self.test_instr = []
 
         # ---
         self.__all_possible_instr_note_pairs = set()
@@ -201,7 +202,9 @@ class MidiPreProcessor:
                 "master_instr_decoder": copy.deepcopy(self.__master_instr_decoder),
 
                 "master_genre_encoder": copy.deepcopy(self.__master_genre_encoder),
-                "master_genre_decoder": copy.deepcopy(self.__master_genre_decoder),}
+                "master_genre_decoder": copy.deepcopy(self.__master_genre_decoder),
+
+                "test_instr": copy.deepcopy(self.test_instr)}
 
     def __thread_pool_datasets_reader(self, func,
                                       path_to_full_data_set,
@@ -265,7 +268,7 @@ class MidiPreProcessor:
 
         # Move through midi file; store data on instrument/note relationship
         for instr in midi_data.instruments:
-
+            self.test_instr.append(instr)
             for note_obj in instr.notes:
                 flat_instr_note_seq.append(
                     (instr.name + INSTRUMENT_NOTE_SPLITTER.STR +
