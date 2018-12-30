@@ -10,24 +10,22 @@ import numpy as np
 from music21 import instrument
 import pretty_midi
 
+# pre_processor_obj = MidiPreProcessor(ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH)
+pre_processor_shelve = shelve.open(ABS_PATHS.SHELVES_PATH +
+                                   "/Midi_Pre_Processor")
+# pre_processor_shelve["pre_processor"] = pre_processor_obj
 
+pre_processor_obj = pre_processor_shelve["pre_processor"]
 
-pre_processor_obj = MidiPreProcessor(ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH,
-                            genre_sub_sample_set=30)
+print(pre_processor_obj.return_all_possible_instr_note_pairs())
+print(len(pre_processor_obj.return_all_possible_instr_note_pairs()))
 
-test_dict = pre_processor_obj.return_core_atributes().items()
-    if test_dict["test_instr"]:
-        for instr in v:
-            if len(instr) > 2:
-                print(type(instr))
-                pretty_midi.instrument_name_to_program(instr)
+# print(total_song.fluidsynth())
 
-
-pre_processor_shelve = shelve.open(ABS_PATHS.SHELVES_PATH + "/Midi_Pre_Processor")
-pre_processor_shelve["pre_processor"] = pre_processor_obj
+# for instr in test_dict["test_instr"][:10]:
+#     print(instr.name)
 
 #
-# pre_processor_obj = pre_processor_shelve["pre_processor"]
 #
 # test_attr_dict = pre_processor_obj.return_core_atributes()
 #

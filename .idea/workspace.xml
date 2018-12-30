@@ -43,34 +43,10 @@
       <file leaf-file-name="Setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="720">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model_Structures.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pre_Production/Model_Structures.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lstm.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Classical-Piano-Composer/lstm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="117" column="27" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="27" />
-              <folding>
-                <element signature="e#96#107#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,8 +55,8 @@
       <file leaf-file-name="Midi_Pre_Processor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="206" column="59" selection-start-line="206" selection-start-column="44" selection-end-line="206" selection-end-column="59" />
+            <state relative-caret-position="348">
+              <caret line="463" column="44" selection-start-line="463" selection-start-column="8" selection-end-line="463" selection-end-column="44" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -99,11 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>__found</find>
-      <find>genre_instr_note_pair_counter</find>
-      <find>genre_file_meta_data</find>
-      <find>genre_instr_note_pairs_counter</find>
-      <find>genre_instr_note_pairs</find>
       <find>genre_total_instr_notes</find>
       <find>genre_numeric_instr_notes</find>
       <find>sys.maxsize</find>
@@ -126,9 +97,14 @@
       <find>__total_intr_note_pair_count</find>
       <find>MidiPreProcessor</find>
       <find>print(</find>
+      <find>self.test_instr</find>
+      <find>all_instruments</find>
       <find>np_utils</find>
       <find>pretty_midi</find>
-      <find>self.test_instr</find>
+      <find>The Pre Processor found</find>
+      <find>.name</find>
+      <find>genre_instruments</find>
+      <find>cello_program</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,6 +203,12 @@
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
               <item name="Data_Dump" type="462c0819:PsiDirectoryNode" />
               <item name="Saved_Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
+              <item name="Data_Dump" type="462c0819:PsiDirectoryNode" />
+              <item name="Shelves" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
@@ -368,7 +350,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -592,6 +574,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Model_Structures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classical-Piano-Composer/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="104" column="22" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
+          <folding>
+            <element signature="e#96#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -609,40 +611,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classical-Piano-Composer/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="117" column="27" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="27" />
-          <folding>
-            <element signature="e#96#107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="206" column="59" selection-start-line="206" selection-start-column="44" selection-end-line="206" selection-end-column="59" />
+        <state relative-caret-position="348">
+          <caret line="463" column="44" selection-start-line="463" selection-start-column="8" selection-end-line="463" selection-end-column="44" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/Model_Structures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state relative-caret-position="720">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
