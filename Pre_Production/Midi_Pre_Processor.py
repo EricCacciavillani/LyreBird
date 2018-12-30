@@ -28,7 +28,6 @@ class MidiPreProcessor:
 
         # Progress-bar for threading-pool
         self.__pbar = None
-        self.test_instr = []
 
         # ---
         self.__all_possible_instr_note_pairs = set()
@@ -104,6 +103,8 @@ class MidiPreProcessor:
         self.__all_instruments = sorted(self.__all_instruments)
 
         # Begin creating label encoders and decoders
+
+        # -----
         for label, (genre, _) in enumerate(
                 self.__genre_instr_note_counters.items()):
             self.__master_genre_encoder[genre] = label + 1
@@ -131,7 +132,7 @@ class MidiPreProcessor:
         # Corrupted files were found.
         if self.__corrupted_files_paths:
 
-            print("The Pre Processor found {0}".format(len(self.__corrupted_files_paths)))
+            print("The Pre Processor found {0} corrupted files".format(len(self.__corrupted_files_paths)))
             print("Displaying all corrupted songs:\n")
             for song in self.__corrupted_files_paths:
                 print("\t", song.split("/", 6)[-1])
@@ -182,29 +183,6 @@ class MidiPreProcessor:
 
         # Marks files to be selected for validation
         self.__generate_validation_files()
-
-    def return_core_atributes(self):
-        return {"all_possible_instr_note_pairs": copy.deepcopy(self.__all_possible_instr_note_pairs),
-                "all_possible_instr_note_pairs_counter": copy.deepcopy(self.__all_possible_instr_note_pairs_counter),
-                "all_instruments": copy.deepcopy(self.__all_instruments),
-
-                "blacklisted_files_validation": copy.deepcopy(self.__blacklisted_files_validation),
-                "genre_file_dict": copy.deepcopy(self.__genre_file_dict),
-                "genre_instr_note_counters": copy.deepcopy(self.__genre_instr_note_counters),
-
-                "corrupted_files_paths": copy.deepcopy(self.__corrupted_files_paths),
-                "small_files_paths": copy.deepcopy(self.__small_files_paths),
-
-                "master_instr_note_encoder": copy.deepcopy(self.__master_instr_note_encoder),
-                "master_instr_note_decoder": copy.deepcopy(self.__master_instr_note_decoder),
-
-                "master_instr_encoder": copy.deepcopy(self.__master_instr_encoder),
-                "master_instr_decoder": copy.deepcopy(self.__master_instr_decoder),
-
-                "master_genre_encoder": copy.deepcopy(self.__master_genre_encoder),
-                "master_genre_decoder": copy.deepcopy(self.__master_genre_decoder),
-
-                "test_instr": copy.deepcopy(self.test_instr)}
 
     def __thread_pool_datasets_reader(self, func,
                                       path_to_full_data_set,
@@ -266,25 +244,31 @@ class MidiPreProcessor:
         # Stores instrument note pair
         flat_instr_note_seq = []
 
-        # Move through midi file; store data on instrument/note relationship
+        file_instruments = set()
+
+        # Move through midi file; store data on instrument/note relationship in
+        # string
         for instr in midi_data.instruments:
-            self.test_instr.append(instr)
+
             for note_obj in instr.notes:
+                file_instruments.add("Program:" + str(instr.program) +
+                                     INSTRUMENT_NOTE_SPLITTER.STR +
+                                     "Is_Drum:" + str(instr.is_drum))
+
                 flat_instr_note_seq.append(
-                    (instr.name + INSTRUMENT_NOTE_SPLITTER.STR +
-                     pretty_midi.note_number_to_name(note_obj.pitch),
-                     note_obj))
+                    ("Program:" + str(instr.program) + INSTRUMENT_NOTE_SPLITTER.STR
+                     + "Is_Drum:" + str(instr.is_drum) + INSTRUMENT_NOTE_SPLITTER.STR
+                     + "Note:" +
+                     pretty_midi.note_number_to_name(note_obj.pitch),note_obj))
 
         # ---
-
         flat_instr_note_seq_len = len(flat_instr_note_seq)
 
         # File is to small for our neural networks to take; Raise flag;
         if flat_instr_note_seq_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
             return {"flat_instr_note_seq": flat_instr_note_seq,
                     "flat_instr_note_seq_len": flat_instr_note_seq_len,
-                    "instruments": {instr.name for instr
-                                    in midi_data.instruments},
+                    "instruments": file_instruments,
                     "small_file_check": True,
                     "corrupted": False}
 
@@ -296,8 +280,7 @@ class MidiPreProcessor:
         # Return dict for more explict multi return type
         return {"flat_instr_note_seq": flat_instr_note_seq,
                 "flat_instr_note_seq_len": flat_instr_note_seq_len,
-                "instruments": set([instr.name for instr
-                                    in midi_data.instruments]),
+                "instruments": file_instruments,
                 "small_file_check": False,
                 "corrupted": False}
 
@@ -364,17 +347,6 @@ class MidiPreProcessor:
                 "corrupted_files": corrupted_files,
                 "small_files": small_files,}
 
-    # Delete the unused files from personal directory
-    def delete_corrupted_files(self):
-        for song in self.__corrupted_files_paths:
-            os.remove(song)
-        self.__corrupted_files_paths = []
-
-    def delete_small_files(self):
-        for song in self.__small_files_paths:
-            os.remove(song)
-        self.__small_files_paths = []
-
     def __generate_validation_files(self):
         """
             Mark files for the validation set
@@ -412,7 +384,7 @@ class MidiPreProcessor:
 
                 note_count_file_list.remove(closest_file_note_count)
 
-    def train_test_split(self,
+    def seq_train_test_split(self,
                          target_genre_name=False,
                          validation_set_required=True):
         """
@@ -476,3 +448,68 @@ class MidiPreProcessor:
                         break
 
         return train_note_sequences, train_output, test_note_sequences, test_output
+
+    # Delete the unused files from personal directory
+    def delete_corrupted_files(self):
+        for song in self.__corrupted_files_paths:
+            os.remove(song)
+        self.__corrupted_files_paths = []
+
+    def delete_small_files(self):
+        for song in self.__small_files_paths:
+            os.remove(song)
+        self.__small_files_paths = []
+
+    # --- Getters
+    def return_all_possible_instr_note_pairs(self):
+        return copy.deepcopy(self.__all_possible_instr_note_pairs)
+
+    def return_genre_instr_note_counters(self):
+        return copy.deepcopy(self.__genre_instr_note_counters)
+
+    def return_all_possible_instr_note_pairs_counter(self):
+        return copy.deepcopy(self.__all_possible_instr_note_pairs_counter)
+
+    # ----
+    def return_all_instruments(self):
+        return copy.deepcopy(self.__all_instruments)
+
+    # ----
+    def return_blacklisted_files_validation(self):
+        return copy.deepcopy(self.__blacklisted_files_validation)
+
+    def return_genre_file_dict(self):
+        return copy.deepcopy(self.__genre_file_dict)
+
+    # ----
+    def return_corrupted_files_paths(self):
+        return copy.deepcopy(self.__corrupted_files_paths)
+
+    def return_small_files_paths(self):
+        return copy.deepcopy(self.__small_files_paths)
+
+    # ----
+    def return_master_instr_note_encoder(self):
+        return copy.deepcopy(self.__master_instr_note_encoder)
+
+    def return_master_instr_note_decoder(self):
+        return copy.deepcopy(self.__master_instr_note_decoder)
+
+    # ----
+    def return_master_instr_encoder(self):
+        return copy.deepcopy(self.__master_instr_encoder)
+
+    def return_master_instr_decoder(self):
+        return copy.deepcopy(self.__master_instr_decoder)
+
+    # ----
+    def return_master_genre_encoder(self):
+        return copy.deepcopy(self.__master_genre_encoder)
+
+    def return_master_genre_decoder(self):
+        return copy.deepcopy(self.__master_genre_decoder)
+
+    # -------------------------------------------------
+    # --- Setters
+    def re_init_validation(self):
+        pass
