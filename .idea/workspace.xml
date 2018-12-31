@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classical-Piano-Composer" beforeDir="false" afterPath="$PROJECT_DIR$/Classical-Piano-Composer" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pre_Production/Setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared_Files/Global_Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Global_Util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Global_Util.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Global_Util.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="465">
+              <caret line="60" column="55" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Setup.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="240">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -55,8 +55,8 @@
       <file leaf-file-name="Midi_Pre_Processor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="463" column="44" selection-start-line="463" selection-start-column="8" selection-end-line="463" selection-end-column="44" />
+            <state relative-caret-position="270">
+              <caret line="487" column="43" selection-start-line="487" selection-start-column="8" selection-end-line="487" selection-end-column="43" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -75,16 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>genre_total_instr_notes</find>
-      <find>genre_numeric_instr_notes</find>
-      <find>sys.maxsize</find>
-      <find>read</find>
-      <find>read_midi_file_by_note</find>
-      <find>read_midi_file</find>
-      <find>genre_instruments.add(midi_file_attr[&quot;instruments&quot;])</find>
-      <find>midi_file_attr[&quot;instruments&quot;])</find>
-      <find>.add(</find>
-      <find>flat_instr_note_seq</find>
       <find>genre_instruments += midi_file_attr[&quot;flat_instr_note_seq&quot;]</find>
       <find>__all_possible_instr_note_counter</find>
       <find>__master_instr_note_encoder</find>
@@ -104,6 +94,16 @@
       <find>The Pre Processor found</find>
       <find>.name</find>
       <find>genre_instruments</find>
+      <find>for instr_note_pair in instr_note_seq]</find>
+      <find>or instr_note_pair in instr_note_seq]</find>
+      <find>read_mid</find>
+      <find>[self.__master_instr_note_encoder[instr_note_pair]</find>
+      <find># -------------------------------------------------</find>
+      <find>elf.encode_instr_</find>
+      <find>flat_instr_note_seq</find>
+      <find>instr_note_se</find>
+      <find>Is_Drum:</find>
+      <find>program:</find>
       <find>cello_program</find>
     </findStrings>
   </component>
@@ -151,7 +151,6 @@
         <option value="$PROJECT_DIR$/Pre_Production/Preprocessing_Obj.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Pre_Processing_Obj.py" />
         <option value="$PROJECT_DIR$/Shared_Files/Custom_Exception.py" />
-        <option value="$PROJECT_DIR$/Shared_Files/Global_Util.py" />
         <option value="$PROJECT_DIR$/Pre_Production/RNN_Generation/Pre_Production_Setup.py" />
         <option value="$PROJECT_DIR$/Pre_Production/RNN_Generation/Model_Structures.py" />
         <option value="$PROJECT_DIR$/Pre_Production/__init__.py" />
@@ -161,6 +160,7 @@
         <option value="$PROJECT_DIR$/Shared_Files/Constants.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Setup.py" />
+        <option value="$PROJECT_DIR$/Shared_Files/Global_Util.py" />
       </list>
     </option>
   </component>
@@ -601,20 +601,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="463" column="44" selection-start-line="463" selection-start-column="8" selection-end-line="463" selection-end-column="44" />
+        <state relative-caret-position="270">
+          <caret line="487" column="43" selection-start-line="487" selection-start-column="8" selection-end-line="487" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -623,10 +613,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Pre_Production/Setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="60" column="55" selection-start-line="60" selection-start-column="55" selection-end-line="60" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>

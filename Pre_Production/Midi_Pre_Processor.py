@@ -17,11 +17,11 @@ from Shared_Files.Global_Util import *
 from Shared_Files.Constants import *
 
 
-'''
-    Reads across multiple datasets stores meta data on each data set and files and
-    stores them to be used for later.
-'''
 class MidiPreProcessor:
+    """
+        Reads across multiple data sets stores meta data on each
+        set and associated files for data analysis and model training.
+    """
 
     def __init__(self, path_to_full_data_set,
                  genre_sub_sample_set=sys.maxsize):
@@ -225,65 +225,6 @@ class MidiPreProcessor:
 
         return all_results
 
-    def read_midi_file(self, file):
-        """
-            Extract out the instruments/notes of the midi file.
-        """
-        # Attempt to parse midi file
-        try:
-            midi_data = pretty_midi.PrettyMIDI(file)
-
-        # Midi file couldn't be opened; Raise flag; return dummy dict
-        except:
-            return {"flat_instr_note_seq": [],
-                    "flat_instr_note_seq_len": 0,
-                    "instruments": {},
-                    "small_file_check": False,
-                    "corrupted": True}
-
-        # Stores instrument note pair
-        flat_instr_note_seq = []
-
-        file_instruments = set()
-
-        # Move through midi file; store data on instrument/note relationship in
-        # string
-        for instr in midi_data.instruments:
-
-            for note_obj in instr.notes:
-                file_instruments.add("Program:" + str(instr.program) +
-                                     INSTRUMENT_NOTE_SPLITTER.STR +
-                                     "Is_Drum:" + str(instr.is_drum))
-
-                flat_instr_note_seq.append(
-                    ("Program:" + str(instr.program) + INSTRUMENT_NOTE_SPLITTER.STR
-                     + "Is_Drum:" + str(instr.is_drum) + INSTRUMENT_NOTE_SPLITTER.STR
-                     + "Note:" +
-                     pretty_midi.note_number_to_name(note_obj.pitch),note_obj))
-
-        # ---
-        flat_instr_note_seq_len = len(flat_instr_note_seq)
-
-        # File is to small for our neural networks to take; Raise flag;
-        if flat_instr_note_seq_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
-            return {"flat_instr_note_seq": flat_instr_note_seq,
-                    "flat_instr_note_seq_len": flat_instr_note_seq_len,
-                    "instruments": file_instruments,
-                    "small_file_check": True,
-                    "corrupted": False}
-
-        # Sort notes in proper sequence based on their starting and end points
-        flat_instr_note_seq.sort(key=lambda tup: (tup[1].start, tup[1].end))
-        flat_instr_note_seq = [instr_note[0] for instr_note in
-                              flat_instr_note_seq]
-
-        # Return dict for more explict multi return type
-        return {"flat_instr_note_seq": flat_instr_note_seq,
-                "flat_instr_note_seq_len": flat_instr_note_seq_len,
-                "instruments": file_instruments,
-                "small_file_check": False,
-                "corrupted": False}
-
     def __genre_dataset_init(self, genre_train_files):
         """
             Init full dataset attributes on MidiPreProcessor init
@@ -384,12 +325,71 @@ class MidiPreProcessor:
 
                 note_count_file_list.remove(closest_file_note_count)
 
+    def read_midi_file(self, file):
+        """
+            Extract out the instruments/notes of the midi file.
+        """
+        # Attempt to parse midi file
+        try:
+            midi_data = pretty_midi.PrettyMIDI(file)
+
+        # Midi file couldn't be opened; Raise flag; return dummy dict
+        except:
+            return {"flat_instr_note_seq": [],
+                    "flat_instr_note_seq_len": 0,
+                    "instruments": {},
+                    "small_file_check": False,
+                    "corrupted": True}
+
+        # Stores instrument note pair
+        flat_instr_note_seq = []
+
+        file_instruments = set()
+
+        # Move through midi file; store data on instrument/note relationship in
+        # string
+        for instr in midi_data.instruments:
+
+            for note_obj in instr.notes:
+                file_instruments.add("Program:" + str(instr.program) +
+                                     INSTRUMENT_NOTE_SPLITTER.STR +
+                                     "Is_Drum:" + str(instr.is_drum))
+
+                flat_instr_note_seq.append(
+                    ("Program:" + str(instr.program) + INSTRUMENT_NOTE_SPLITTER.STR
+                     + "Is_Drum:" + str(instr.is_drum) + INSTRUMENT_NOTE_SPLITTER.STR
+                     + "Note:" +
+                     pretty_midi.note_number_to_name(note_obj.pitch),note_obj))
+
+        # ---
+        flat_instr_note_seq_len = len(flat_instr_note_seq)
+
+        # File is to small for our neural networks to take; Raise flag;
+        if flat_instr_note_seq_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
+            return {"flat_instr_note_seq": flat_instr_note_seq,
+                    "flat_instr_note_seq_len": flat_instr_note_seq_len,
+                    "instruments": file_instruments,
+                    "small_file_check": True,
+                    "corrupted": False}
+
+        # Sort notes in proper sequence based on their starting and end points
+        flat_instr_note_seq.sort(key=lambda tup: (tup[1].start, tup[1].end))
+        flat_instr_note_seq = [instr_note[0] for instr_note in
+                              flat_instr_note_seq]
+
+        # Return dict for more explict multi return type
+        return {"flat_instr_note_seq": flat_instr_note_seq,
+                "flat_instr_note_seq_len": flat_instr_note_seq_len,
+                "instruments": file_instruments,
+                "small_file_check": False,
+                "corrupted": False}
+
     def seq_train_test_split(self,
-                         target_genre_name=False,
-                         validation_set_required=True):
+                             target_genre_name=False,
+                             validation_set_required=True):
         """
             Returns back a training set and test set based on the input
-            sizes of the models.
+            sizes of the models with a sequence of instr/notes with
         """
 
         # Init train/test; input/output for models
@@ -400,14 +400,13 @@ class MidiPreProcessor:
         test_output = []
 
         # Iterate through given genres and associated meta data on each file
-        for genre_name, file_dict in self.__genre_file_dict.items():
+        for genre_name, genre_file_dict in self.__genre_file_dict.items():
 
-            for file_path, instr_note_seq in file_dict.items():
+            for file_path, file_dict in genre_file_dict.items():
 
-                encoded_notes = [self.__master_note_encoder[instr_note_pair]
-                                 for instr_note_pair in instr_note_seq]
+                encoded_notes = self.encode_instr_note_seq(file_dict["flat_instr_note_seq"])
 
-                # Iterate by the input sequence length for each note sequnce;
+                # Iterate by the input sequence length for each note sequence;
                 # Eliminate sequences that are under the input
                 for i in range(0, len(encoded_notes) + 1,
                                MIDI_CONSTANTS.INPUT_SEQUENCE_LEN):
@@ -418,30 +417,37 @@ class MidiPreProcessor:
                         try:
 
                             # Validation file found
-                            if validation_set_required and file_path in self.__blacklisted_files_validation:
+                            if validation_set_required \
+                                    and file_path in self.__blacklisted_files_validation:
 
-                                # Target is genre
+                                # Target will be the genre
                                 if target_genre_name:
-                                    test_output.append(self.__master_genre_encoder[genre_name])
-                                # Target is a note
+                                    test_output.append(
+                                        self.__master_genre_encoder[genre_name])
+
+                                # Target will be the next note
                                 else:
-                                    test_output.append(encoded_notes[i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
+                                    test_output.append(encoded_notes[i +
+                                                                     MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
 
                                 test_note_sequences.append(note_sequence)
 
                             # Must be a training file
                             else:
 
-                                # Target is genre
+                                # Target will be the genre
                                 if target_genre_name:
-                                    train_output.append(self.__master_genre_encoder[genre_name])
-                                # Target is a note
+                                    train_output.append(
+                                        self.__master_genre_encoder[genre_name])
+
+                                # Target will be the next note
                                 else:
-                                    train_output.append(encoded_notes[i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
+                                    train_output.append(encoded_notes[i +
+                                                                      MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
 
                                 train_note_sequences.append(note_sequence)
 
-                        # Input sequence was above but
+                        # Input sequence fit but there was no target
                         except IndexError:
                             continue
                     else:
@@ -460,7 +466,11 @@ class MidiPreProcessor:
             os.remove(song)
         self.__small_files_paths = []
 
-    # --- Getters
+    # --------------- Setters ---------------
+    def re_init_validation(self, new_file_list):
+        self.__blacklisted_files_validation = new_file_list
+
+    # --------------- Getters ---------------
     def return_all_possible_instr_note_pairs(self):
         return copy.deepcopy(self.__all_possible_instr_note_pairs)
 
@@ -509,7 +519,30 @@ class MidiPreProcessor:
     def return_master_genre_decoder(self):
         return copy.deepcopy(self.__master_genre_decoder)
 
-    # -------------------------------------------------
-    # --- Setters
-    def re_init_validation(self):
-        pass
+    # --------------- Basic Functionality ---------------
+    def encode_instr_note(self, instr_note_str):
+        return self.__master_instr_note_encoder[instr_note_str]
+
+    def encode_instr_note_seq(self, instr_note_seq):
+        return [self.__master_instr_note_encoder[instr_note_pair]
+                for instr_note_pair in instr_note_seq]
+    # ----
+    def decode_instr_note(self, instr_note_num):
+        return self.__master_instr_note_decoder[instr_note_num]
+
+    def decode_instr_note_seq(self, instr_note_seq):
+        return [self.__master_instr_note_decoder[instr_note_pair]
+                for instr_note_pair in instr_note_seq]
+    # ----
+    def encode_instr(self, instr_str):
+        return self.__master_instr_encoder[instr_str]
+
+    def decode_instr(self, instr_num):
+        return self.__master_instr_decoder[instr_num]
+
+    # ----
+    def encode_genre(self, genre_str):
+        return self.__master_genre_encoder[genre_str]
+
+    def decode_genre(self, genre_num):
+        return self.__master_genre_decoder[genre_num]
