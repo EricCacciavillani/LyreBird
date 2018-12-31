@@ -17,8 +17,14 @@ pre_processor_shelve = shelve.open(ABS_PATHS.SHELVES_PATH +
 
 pre_processor_obj = pre_processor_shelve["pre_processor"]
 
-print(pre_processor_obj.return_all_possible_instr_note_pairs())
-print(len(pre_processor_obj.return_all_possible_instr_note_pairs()))
+print(sorted(pre_processor_obj.return_blacklisted_files_validation()))
+
+X_train, y_train, X_test, y_test = pre_processor_obj.seq_train_test_split()
+print(X_train[0])
+
+create_midi_object(input_seq=X_train[0],
+                   instr_decoder_obj=
+                   pre_processor_obj.return_master_instr_note_decoder())
 
 # print(total_song.fluidsynth())
 
