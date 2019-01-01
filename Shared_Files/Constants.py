@@ -16,8 +16,12 @@ ABS_PATHS = enum(PROJECT_ABSOLUTE_PATH=__PROJECT_ABSOLUTE_PATH,
 # Set path directory
 MIDI_CONSTANTS = enum(INPUT_SEQUENCE_LEN=50,
                       TRACK_INDEX=0)
+HARDWARE_RELATED_CONSTANTS = enum(SECONDS_TO_COOL_GPU=150,
+                                  THREAD_POOL_AMOUNT=2000)
 
 INSTRUMENT_NOTE_SPLITTER = enum(STR="-:-")
 
+VELOCITY_CONSTANTS = enum(LIST=[60, 80, 100])
+
 # Init 'const' variables to be shared
-SECONDS_TO_COOL_GPU = 150
+
