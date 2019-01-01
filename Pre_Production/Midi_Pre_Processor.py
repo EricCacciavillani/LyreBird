@@ -213,7 +213,7 @@ class MidiPreProcessor:
         self.__pbar = tqdm(total=self.__total_file_count)
 
         # Begin threaded pool
-        pool = ThreadPool(2000)
+        pool = ThreadPool(HARDWARE_RELATED_CONSTANTS.THREAD_POOL_AMOUNT)
         all_results = pool.imap_unordered(func,
                                           all_files_by_genre)
 
@@ -351,15 +351,17 @@ class MidiPreProcessor:
         for instr in midi_data.instruments:
 
             for note_obj in instr.notes:
-                file_instruments.add("Program:" + str(instr.program) +
-                                     INSTRUMENT_NOTE_SPLITTER.STR +
-                                     "Is_Drum:" + str(instr.is_drum))
+                program_instr_str = "Program:" + str(instr.program)\
+                                    + INSTRUMENT_NOTE_SPLITTER.STR\
+                                    + "Is_Drum:" + str(instr.is_drum)
+                file_instruments.add(program_instr_str)
 
                 flat_instr_note_seq.append(
-                    ("Program:" + str(instr.program) + INSTRUMENT_NOTE_SPLITTER.STR
-                     + "Is_Drum:" + str(instr.is_drum) + INSTRUMENT_NOTE_SPLITTER.STR
-                     + "Note:" +
-                     pretty_midi.note_number_to_name(note_obj.pitch),note_obj))
+                    (program_instr_str + INSTRUMENT_NOTE_SPLITTER.STR + "Note:"
+                     + pretty_midi.note_number_to_name(note_obj.pitch)
+                     + INSTRUMENT_NOTE_SPLITTER.STR + "Velocity:" + str(
+                                find_nearest(numbers=VELOCITY_CONSTANTS.LIST,
+                                             target=note_obj.velocity)), note_obj))
 
         # ---
         flat_instr_note_seq_len = len(flat_instr_note_seq)
@@ -398,12 +400,15 @@ class MidiPreProcessor:
 
         test_note_sequences = []
         test_output = []
-
+        lockert = 0
         # Iterate through given genres and associated meta data on each file
         for genre_name, genre_file_dict in self.__genre_file_dict.items():
 
             for file_path, file_dict in genre_file_dict.items():
 
+                if lockert == 0:
+                    print(file_path)
+                    lockert = 9
                 encoded_notes = self.encode_instr_note_seq(file_dict["flat_instr_note_seq"])
 
                 # Iterate by the input sequence length for each note sequence;

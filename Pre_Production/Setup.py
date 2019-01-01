@@ -19,13 +19,19 @@ pre_processor_obj = pre_processor_shelve["pre_processor"]
 
 print(sorted(pre_processor_obj.return_blacklisted_files_validation()))
 
+print(pre_processor_obj.return_all_possible_instr_note_pairs())
+
+print(len(pre_processor_obj.return_all_possible_instr_note_pairs()))
+
 X_train, y_train, X_test, y_test = pre_processor_obj.seq_train_test_split()
-print(X_train[0])
 
-create_midi_object(input_seq=X_train[0],
-                   instr_decoder_obj=
-                   pre_processor_obj.return_master_instr_note_decoder())
+full_song = create_pretty_midi_object(input_seq=(X_train[60] + X_train[61]),
+                                      instr_decoder_obj=pre_processor_obj.return_master_instr_note_decoder())
 
+full_song.write("New_son.mid")
+
+
+print()
 # print(total_song.fluidsynth())
 
 # for instr in test_dict["test_instr"][:10]:
