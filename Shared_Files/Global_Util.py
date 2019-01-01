@@ -58,17 +58,17 @@ def create_pretty_midi_object(input_seq,
                                                                * (len(input_seq) - len(velocity_list))), default_offset)]
     # ----
 
-    # A 'velocity_list' was not provided; create one using default values
-    if not velocity_list:
-        velocity_list = [default_velocity
-                         for _ in range(0, len(input_seq))]
-
-    # The 'velocity_list' was not long enough for the input sequence;
-    # fill in the rest with default values
-    elif len(velocity_list) < len(input_seq):
-        velocity_list += [default_velocity
-                          for i in range(0,
-                                          (len(input_seq) - len(velocity_list)))]
+    # # A 'velocity_list' was not provided; create one using default values
+    # if not velocity_list:
+    #     velocity_list = [default_velocity
+    #                      for _ in range(0, len(input_seq))]
+    #
+    # # The 'velocity_list' was not long enough for the input sequence;
+    # # fill in the rest with default values
+    # elif len(velocity_list) < len(input_seq):
+    #     velocity_list += [default_velocity
+    #                       for i in range(0,
+    #                                       (len(input_seq) - len(velocity_list)))]
 
     # Encoder object passed; assume that 'input_seq' needs to be decoded
     if instr_decoder_obj:
