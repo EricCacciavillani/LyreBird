@@ -4,6 +4,11 @@ import numpy as np
 import itertools
 import pretty_midi
 import math
+import sys
+sys.path.append('..')
+
+from Shared_Files.Global_Util import *
+from Shared_Files.Constants import *
 
 # --------------- Numeric Handling ---------------
 def find_nearest(numbers, target):
@@ -35,9 +40,9 @@ def find_closest_sum(numbers, target):
 def create_pretty_midi_object(input_seq,
                               instr_decoder_obj=None,
                               note_start_end_list=[],
-                              velocity_list=[],
-                              default_offset=.45,
-                              default_velocity=100):
+                              default_offset = DEFAULT_NOTE_CONSTANTS.OFFSET,
+                              default_velocity = DEFAULT_NOTE_CONSTANTS.VELOCITY,
+                              velocity_list=[]):
     """
         Takes a input_seq of instrument/note pairs and converts them into a
         pretty midi object.
@@ -58,17 +63,17 @@ def create_pretty_midi_object(input_seq,
                                                                * (len(input_seq) - len(velocity_list))), default_offset)]
     # ----
 
-    # # A 'velocity_list' was not provided; create one using default values
-    # if not velocity_list:
-    #     velocity_list = [default_velocity
-    #                      for _ in range(0, len(input_seq))]
-    #
-    # # The 'velocity_list' was not long enough for the input sequence;
-    # # fill in the rest with default values
-    # elif len(velocity_list) < len(input_seq):
-    #     velocity_list += [default_velocity
-    #                       for i in range(0,
-    #                                       (len(input_seq) - len(velocity_list)))]
+    # A 'velocity_list' was not provided; create one using default values
+    if not velocity_list:
+        velocity_list = [default_velocity
+                         for _ in range(0, len(input_seq))]
+
+    # The 'velocity_list' was not long enough for the input sequence;
+    # fill in the rest with default values
+    elif len(velocity_list) < len(input_seq):
+        velocity_list += [default_velocity
+                          for i in range(0,
+                                          (len(input_seq) - len(velocity_list)))]
 
     # Encoder object passed; assume that 'input_seq' needs to be decoded
     if instr_decoder_obj:

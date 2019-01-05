@@ -10,11 +10,12 @@ from tqdm import tqdm
 import sys
 sys.path.append('..')
 
-import warnings
-warnings.filterwarnings("ignore")
-
 from Shared_Files.Global_Util import *
 from Shared_Files.Constants import *
+
+
+import warnings
+warnings.filterwarnings("ignore")
 
 
 class MidiPreProcessor:
@@ -159,7 +160,7 @@ class MidiPreProcessor:
             print("The Pre Processor found {0} files that"
                   " are smaller or equal to than {1} notes".format(
                 len(self.__small_files_paths),
-                MIDI_CONSTANTS.INPUT_SEQUENCE_LEN))
+                MIDI_CONSTANTS.FLAT_INPUT_SEQUENCE_LEN))
 
             print("Displaying all small songs:\n")
             for song in self.__small_files_paths:
@@ -358,16 +359,14 @@ class MidiPreProcessor:
 
                 flat_instr_note_seq.append(
                     (program_instr_str + INSTRUMENT_NOTE_SPLITTER.STR + "Note:"
-                     + pretty_midi.note_number_to_name(note_obj.pitch)
-                     + INSTRUMENT_NOTE_SPLITTER.STR + "Velocity:" + str(
-                                find_nearest(numbers=VELOCITY_CONSTANTS.LIST,
-                                             target=note_obj.velocity)), note_obj))
+                     + pretty_midi.note_number_to_name(note_obj.pitch),
+                     note_obj))
 
         # ---
         flat_instr_note_seq_len = len(flat_instr_note_seq)
 
         # File is to small for our neural networks to take; Raise flag;
-        if flat_instr_note_seq_len <= MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
+        if flat_instr_note_seq_len <= MIDI_CONSTANTS.FLAT_INPUT_SEQUENCE_LEN:
             return {"flat_instr_note_seq": flat_instr_note_seq,
                     "flat_instr_note_seq_len": flat_instr_note_seq_len,
                     "instruments": file_instruments,
@@ -385,80 +384,6 @@ class MidiPreProcessor:
                 "instruments": file_instruments,
                 "small_file_check": False,
                 "corrupted": False}
-
-    def seq_train_test_split(self,
-                             target_genre_name=False,
-                             validation_set_required=True):
-        """
-            Returns back a training set and test set based on the input
-            sizes of the models with a sequence of instr/notes with
-        """
-
-        # Init train/test; input/output for models
-        train_note_sequences = []
-        train_output = []
-
-        test_note_sequences = []
-        test_output = []
-        lockert = 0
-        # Iterate through given genres and associated meta data on each file
-        for genre_name, genre_file_dict in self.__genre_file_dict.items():
-
-            for file_path, file_dict in genre_file_dict.items():
-
-                if lockert == 0:
-                    print(file_path)
-                    lockert = 9
-                encoded_notes = self.encode_instr_note_seq(file_dict["flat_instr_note_seq"])
-
-                # Iterate by the input sequence length for each note sequence;
-                # Eliminate sequences that are under the input
-                for i in range(0, len(encoded_notes) + 1,
-                               MIDI_CONSTANTS.INPUT_SEQUENCE_LEN):
-                    note_sequence = encoded_notes[i: i + MIDI_CONSTANTS.INPUT_SEQUENCE_LEN]
-
-                    if len(note_sequence) == MIDI_CONSTANTS.INPUT_SEQUENCE_LEN:
-
-                        try:
-
-                            # Validation file found
-                            if validation_set_required \
-                                    and file_path in self.__blacklisted_files_validation:
-
-                                # Target will be the genre
-                                if target_genre_name:
-                                    test_output.append(
-                                        self.__master_genre_encoder[genre_name])
-
-                                # Target will be the next note
-                                else:
-                                    test_output.append(encoded_notes[i +
-                                                                     MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
-
-                                test_note_sequences.append(note_sequence)
-
-                            # Must be a training file
-                            else:
-
-                                # Target will be the genre
-                                if target_genre_name:
-                                    train_output.append(
-                                        self.__master_genre_encoder[genre_name])
-
-                                # Target will be the next note
-                                else:
-                                    train_output.append(encoded_notes[i +
-                                                                      MIDI_CONSTANTS.INPUT_SEQUENCE_LEN])
-
-                                train_note_sequences.append(note_sequence)
-
-                        # Input sequence fit but there was no target
-                        except IndexError:
-                            continue
-                    else:
-                        break
-
-        return train_note_sequences, train_output, test_note_sequences, test_output
 
     # Delete the unused files from personal directory
     def delete_corrupted_files(self):
