@@ -4,6 +4,7 @@ sys.path.append('..')
 
 from Pre_Production.Midi_Pre_Processor import *
 from Pre_Production.Model_Generator import *
+from Shared_Files.Music_Pallete import *
 
 
 pre_processor_shelve = shelve.open(ABS_PATHS.SHELVES_PATH
@@ -11,24 +12,11 @@ pre_processor_shelve = shelve.open(ABS_PATHS.SHELVES_PATH
 
 pre_processor_obj = pre_processor_shelve["pre_processor"]
 
-test_obj = pre_processor_obj.return_genre_file_dict()
-
-
-print(test_obj["Funk_Music"]["/home/eric/Desktop/LyreBird/Datasets/Funk_Music_Midi/sofunky.mid"]["flat_instr_note_seq"])
+MusicPallete(pre_processor_obj)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+# create_pretty_midi_object(genre_file_dict["Funk_Music"]["/home/eric/Desktop/LyreBird/Datasets/Funk_Music_Midi/sofunky.mid"]["flat_instr_note_seq"])
 
 
 
