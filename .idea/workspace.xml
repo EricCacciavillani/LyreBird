@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared_Files/Global_Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Global_Util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared_Files/Icon&#13;" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Music_Pallete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/Model_Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Model_Analysis.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="f9f10dae-6d7b-4e07-b2a2-45b5ad3d390d" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
