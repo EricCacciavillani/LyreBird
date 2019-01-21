@@ -9,7 +9,7 @@ import zlib
 import _pickle as cPickle
 import zlib
 
-shelf = shelve.open('/home/eric/Desktop/LyreBird/Main_Production/Models/LSTM_Models/LSTM_Data_Dump/' + sys.argv[1] + '_Music_LSTM_Model')
+shelf = shelve.open('/home/eric/Desktop/LyreBird/Main_Production/Saved_Models/LSTM_Models/LSTM_Data_Dump/' + sys.argv[1] + '_Music_LSTM_Model')
 backward_dict = shelf['backward_dict']
 input_notes = cPickle.loads(zlib.decompress(shelf['input_notes']))
 vocab_length = shelf['vocab_length']
@@ -17,7 +17,7 @@ sequence_length = shelf['sequence_length']
 
 shelf.close()
 #
-model = load_model('/home/eric/Desktop/LyreBird/Main_Production/Models/LSTM_Models/' + sys.argv[1] + '_Music_LSTM_Model.h5')
+model = load_model('/home/eric/Desktop/LyreBird/Main_Production/Saved_Models/LSTM_Models/' + sys.argv[1] + '_Music_LSTM_Model.h5')
 
 # pick a random sequence from the input as a starting point for the prediction
 n = np.random.randint(0, len(input_notes)-1)

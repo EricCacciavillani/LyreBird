@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/eric/Desktop/LyreBird/Data_Dump/Saved_Models/Tone_Net"
+all_model_checkpoint_paths: "/home/eric/Desktop/LyreBird/Data_Dump/Saved_Models/Tone_Net"

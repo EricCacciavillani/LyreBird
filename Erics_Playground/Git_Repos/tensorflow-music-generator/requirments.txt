@@ -1,9 +1,0 @@
-pip install pandas
-pip install msgpack-python
-pip install numpy
-pip install glob2
-pip install tqdm
-pip install py-midi
-pip install git+https://github.com/vishnubob/python-midi@feature/python3
-
-# Make sure you have gcc
