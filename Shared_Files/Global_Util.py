@@ -96,14 +96,14 @@ def create_pretty_midi_object(input_seq,
         if instrument not in instrument_dict.keys():
 
             # Convert string data to proper midi info
-            program_number = int(tokenized_str[0].split(":")[1])
-            is_drum = (tokenized_str[1].split(":")[1] == "True")
+            program_number = int(tokenized_str[0].split(PARAMETER_VAL_SPLITTER.STR)[1])
+            is_drum = (tokenized_str[1].split(PARAMETER_VAL_SPLITTER.STR)[1] == "True")
 
             # Relate to proper instrument
             instrument_dict[instrument] = pretty_midi.Instrument(
                 program=program_number, is_drum=is_drum)
 
-        pitch = pretty_midi.note_name_to_number(tokenized_str[2].split(":")[1])
+        pitch = pretty_midi.note_name_to_number(tokenized_str[2].split(PARAMETER_VAL_SPLITTER.STR)[1])
 
         # Add note to instrument
         instrument_dict[instrument].notes.append(pretty_midi.Note(
@@ -113,19 +113,6 @@ def create_pretty_midi_object(input_seq,
     # Generate midi object with instrument based data
     full_song = pretty_midi.PrettyMIDI()
     full_song.instruments = [instr for instr in instrument_dict.values()]
-    #
-    # for test_intr in full_song.instruments:
-    #     print("program:", test_intr.program)
-    #     print("isdrum:",test_intr.is_drum)
-    #     print("piano:",test_intr.get_piano_roll())
-    #     print("histogram:",(test_intr.get_pitch_class_histogram())[0])
-    #     print("Notes:",len(test_intr.notes))
-    #     print("histog:", test_intr.get_pitch_class_histogram().sum())
-    #     print("get_chroma:",test_intr.get_chroma().sum())
-    #     print("transition_matrix",test_intr.get_pitch_class_transition_matrix().sum())
-    #     print("syn:",test_intr.synthesize())
-    #     print(test_intr.get_end_time())
-    #     print()
 
     return full_song
 
@@ -137,15 +124,14 @@ def get_instr_note_dict(instr_note_str):
         in the string.
     """
 
-    return {comp_part.split(":")[0]: comp_part.split(":")[1] for comp_part in
-                       instr_note_str.split(INSTRUMENT_NOTE_SPLITTER.STR)}
+    return {comp_part.split(PARAMETER_VAL_SPLITTER.STR)[0]: comp_part.split(PARAMETER_VAL_SPLITTER.STR)[1]
+            for comp_part in instr_note_str.split(INSTRUMENT_NOTE_SPLITTER.STR)}
 
 
 
 def convert_string_to_instr_note_pair(instr_note_str):
 
     instr_note_dict = get_instr_note_dict(instr_note_str)
-
     instr_obj = pretty_midi.Instrument(program=int(instr_note_dict["Program"]),
                                        is_drum=(instr_note_dict["Is_Drum"] == "True"))
 
@@ -167,6 +153,7 @@ def extract_instr_note_pair_attributes(instr_note_obj):
 
 def calculate_wave_mse(wave_form_a,wave_form_b):
     return np.sqrt(np.mean((wave_form_a - wave_form_b) ** 2))
+
 # --------------- Misc ---------------
 def send_sms_to_me(message="You forget to add a message!"):
     """

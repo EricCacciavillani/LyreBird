@@ -20,7 +20,9 @@ class ModelGenerator:
 
     def __init__(self,
                  pre_processor_obj,
-                 twilo_account=False):
+                 twilo_account=False,
+                 model_path=""):
+
 
         # Setting to true allows auto messaging to personal sms through twilo
         self.__twilo_account = twilo_account

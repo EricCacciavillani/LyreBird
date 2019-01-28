@@ -13,10 +13,8 @@ sys.path.append('..')
 from Shared_Files.Global_Util import *
 from Shared_Files.Constants import *
 
-
 import warnings
 warnings.filterwarnings("ignore")
-
 
 class MidiPreProcessor:
     """
@@ -25,7 +23,16 @@ class MidiPreProcessor:
     """
 
     def __init__(self, path_to_full_data_set,
-                 genre_sub_sample_set=sys.maxsize):
+                 genre_sub_sample_set=sys.maxsize,
+                 generate_validation=False):
+        """
+        :param path_to_full_data_set:
+            Pass in a string to the path of directory holding all dataset(s)
+        :param genre_sub_sample_set:
+            Parses each genre into a subset based on the passed integer value.
+        :param generate_validation:
+            Boolean to mark files to be used as validation
+        """
 
         # Progress-bar for threading-pool
         self.__pbar = None
@@ -34,6 +41,7 @@ class MidiPreProcessor:
         self.__all_possible_instr_note_pairs = set()
         self.__all_possible_instr_note_pairs_counter = Counter()
         self.__all_instruments = set()
+        self.__instr_wave_forms = dict()
 
         # Files to ignore for when splicing data into train/test
         self.__blacklisted_files_validation = set()
@@ -133,10 +141,12 @@ class MidiPreProcessor:
         # -------------------------------------
 
         print("Synthesizing all instr/note pairs...")
-        self.__all_possible_instr_note_pairs = \
-            {instr_note_pair:convert_string_to_instr_note_pair(instr_note_pair).fluidsynth()
-             for instr_note_pair in self.__all_possible_instr_note_pairs}
-
+        self.__instr_wave_forms = {instr_name: np.array([convert_string_to_instr_note_pair(
+            instr_note_pair).fluidsynth(FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
+                                                for instr_note_pair in
+                                                self.__all_possible_instr_note_pairs
+                                                if instr_name in instr_note_pair])
+                                   for instr_name in tqdm(self.__all_instruments)}
 
         # Corrupted files were found.
         if self.__corrupted_files_paths:
@@ -190,8 +200,9 @@ class MidiPreProcessor:
                 pass
         # ---------------------------------------------
 
-        # Marks files to be selected for validation
-        self.__generate_validation_files()
+        if generate_validation:
+            # Marks files to be selected for validation
+            self.__generate_validation_files()
 
     def __thread_pool_datasets_reader(self, func,
                                       path_to_full_data_set,
@@ -203,6 +214,7 @@ class MidiPreProcessor:
         # Get all folder paths for each genre
         all_train_datasets_paths = [x[0] for x in os.walk(
             path_to_full_data_set)]
+
         all_train_datasets_paths.pop(0)
 
         all_files_by_genre = []
@@ -360,13 +372,13 @@ class MidiPreProcessor:
         for instr in midi_data.instruments:
 
             for note_obj in instr.notes:
-                program_instr_str = "Program:" + str(instr.program)\
+                program_instr_str = "Program" + PARAMETER_VAL_SPLITTER.STR + str(instr.program)\
                                     + INSTRUMENT_NOTE_SPLITTER.STR\
-                                    + "Is_Drum:" + str(instr.is_drum)
+                                    + "Is_Drum" + PARAMETER_VAL_SPLITTER.STR + str(instr.is_drum)
                 file_instruments.add(program_instr_str)
 
                 flat_instr_note_seq.append(
-                    (program_instr_str + INSTRUMENT_NOTE_SPLITTER.STR + "Note:"
+                    (program_instr_str + INSTRUMENT_NOTE_SPLITTER.STR + "Note" + PARAMETER_VAL_SPLITTER.STR
                      + pretty_midi.note_number_to_name(note_obj.pitch),
                      note_obj))
 
@@ -417,6 +429,9 @@ class MidiPreProcessor:
 
     def return_all_possible_instr_note_pairs_counter(self):
         return copy.deepcopy(self.__all_possible_instr_note_pairs_counter)
+
+    def return_instr_wave_forms(self):
+        return copy.deepcopy(self.__instr_wave_forms)
 
     # ----
     def return_all_instruments(self):

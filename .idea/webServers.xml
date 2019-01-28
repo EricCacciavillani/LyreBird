@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="84df4d62-1a71-4867-9ac2-888bb25b132c" name="LyreBird" url="http://eric@lyrebird.hopto.org">
+        <fileTransfer host="eric@lyrebird.hopto.org" port="22" rootFolder="/home/eric/Desktop/LyreBird" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
