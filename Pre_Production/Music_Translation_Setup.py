@@ -13,6 +13,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import librosa
 from tqdm import tqdm
+import pretty_midi
 
 from os import listdir
 from os.path import isfile, join
@@ -26,20 +27,13 @@ from Pre_Production.Model_Generator import *
 from Pre_Production.Music_Translation import *
 
 
-# Init pre-processor in scope; create/grab shelf from given directory
 pre_processor_obj = None
 pre_processor_shelve = shelve.open(ABS_PATHS.SHELVES_PATH
                                    + SHELVE_NAMES.PRE_PROCESSOR)
 
-pre_processor_obj = MidiPreProcessor(
-    ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH, 2)
-
-pre_processor_shelve["pre_processor"] = pre_processor_obj
-
 # Check to see if the object already exists
 if "pre_processor" in pre_processor_shelve.keys():
     print("Found stored pre processor!")
-
     pre_processor_obj = pre_processor_shelve["pre_processor"]
 
 # Pre-processor not found generate pre-processor
@@ -47,12 +41,34 @@ else:
 
     print("Generating pre processor!")
     pre_processor_obj = MidiPreProcessor(
-        ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH, 20)
+        ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH)
 
     pre_processor_shelve["pre_processor"] = pre_processor_obj
 
 pre_processor_shelve.close()
 
+instrument_name_contains = {"Guitar": False,
+                            "Piano": False,
+                            "Brass": False,
+                            "Synth": False,
+                            "Drums": True}
 
-a = MusicTranslation(pre_processor_obj)
-a.create_model(model_path="Testing")
+all_instruments = pre_processor_obj.return_all_instruments()
+instr_note_pairs_dict = pre_processor_obj.return_instr_note_pairs_dict()
+
+
+print("Synthesizing wanted instr/note pairs...")
+instr_wave_forms = get_instr_wave_forms(instrument_name_contains=instrument_name_contains,
+                                        all_instruments=all_instruments,
+                                        instr_note_pairs_dict=instr_note_pairs_dict,
+                                        unique_matrix=True)
+
+for instr, waves in instr_wave_forms.items():
+    print("instr:{0} Matrix_Shape: {1}".format(instr, waves.shape))
+
+
+lyre_bird_model = MusicTranslationModelGenerator(instr_wave_forms=instr_wave_forms,
+                                                 models_gen_count=12,
+                                                 twilo_account=True)
+
+lyre_bird_model.create_train_model(model_naming_conv="LyreBird_Music_Translator")

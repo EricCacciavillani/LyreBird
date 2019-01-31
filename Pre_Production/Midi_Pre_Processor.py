@@ -40,8 +40,8 @@ class MidiPreProcessor:
         # ---
         self.__all_possible_instr_note_pairs = set()
         self.__all_possible_instr_note_pairs_counter = Counter()
+        self.__instr_note_pairs_dict = dict()
         self.__all_instruments = set()
-        self.__instr_wave_forms = dict()
 
         # Files to ignore for when splicing data into train/test
         self.__blacklisted_files_validation = set()
@@ -111,7 +111,10 @@ class MidiPreProcessor:
             self.__all_possible_instr_note_pairs)
         self.__all_instruments = sorted(self.__all_instruments)
 
-
+        self.__instr_note_pairs_dict = {instr:[instr_note_pair
+                                               for instr_note_pair in self.__all_possible_instr_note_pairs
+                                               if instr_note_pair.find(instr) != -1]
+                                        for instr in self.__all_instruments}
 
         # Begin creating label encoders and decoders
 
@@ -139,14 +142,6 @@ class MidiPreProcessor:
         self.__master_instr_decoder = {v: k for k, v
                                        in self.__master_instr_encoder.items()}
         # -------------------------------------
-
-        print("Synthesizing all instr/note pairs...")
-        self.__instr_wave_forms = {instr_name: np.array([convert_string_to_instr_note_pair(
-            instr_note_pair).fluidsynth(FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
-                                                for instr_note_pair in
-                                                self.__all_possible_instr_note_pairs
-                                                if instr_name in instr_note_pair])
-                                   for instr_name in tqdm(self.__all_instruments)}
 
         # Corrupted files were found.
         if self.__corrupted_files_paths:
@@ -178,7 +173,7 @@ class MidiPreProcessor:
             print("The Pre Processor found {0} files that"
                   " are smaller or equal to than {1} notes".format(
                 len(self.__small_files_paths),
-                MIDI_CONSTANTS.FLAT_INPUT_SEQUENCE_LEN))
+                MIDI_CONSTANTS.SMALL_FILE_CHECK))
 
             print("Displaying all small songs:\n")
             for song in self.__small_files_paths:
@@ -386,7 +381,7 @@ class MidiPreProcessor:
         flat_instr_note_seq_len = len(flat_instr_note_seq)
 
         # File is to small for our neural networks to take; Raise flag;
-        if flat_instr_note_seq_len <= MIDI_CONSTANTS.FLAT_INPUT_SEQUENCE_LEN:
+        if flat_instr_note_seq_len <= MIDI_CONSTANTS.SMALL_FILE_CHECK:
             return {"flat_instr_note_seq": flat_instr_note_seq,
                     "flat_instr_note_seq_len": flat_instr_note_seq_len,
                     "instruments": file_instruments,
@@ -430,12 +425,12 @@ class MidiPreProcessor:
     def return_all_possible_instr_note_pairs_counter(self):
         return copy.deepcopy(self.__all_possible_instr_note_pairs_counter)
 
-    def return_instr_wave_forms(self):
-        return copy.deepcopy(self.__instr_wave_forms)
-
     # ----
     def return_all_instruments(self):
         return copy.deepcopy(self.__all_instruments)
+
+    def return_instr_note_pairs_dict(self):
+        return copy.deepcopy(self.__instr_note_pairs_dict)
 
     # ----
     def return_blacklisted_files_validation(self):
