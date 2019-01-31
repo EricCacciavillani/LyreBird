@@ -225,10 +225,10 @@ class MusicTranslationModelGenerator():
         for _ in range(self.__models_gen_count):
 
             ### TRAINING
-            for step in range(UNIVERSAL_MUSIC_TRANSLATOR.STEPS_PER_EPOCH):
-                pbar = tqdm(self.__instruments_list)
+            pbar = tqdm(range(UNIVERSAL_MUSIC_TRANSLATOR.STEPS_PER_EPOCH))
+            for step in pbar:
                 average_loss = 0.0
-                for index, instr in enumerate(pbar):
+                for index, instr in self.__instruments_list:
 
                     indexes = np.random.randint(0, self.__instr_wave_forms[instr].shape[0], 1)
                     augmented = []
@@ -236,7 +236,6 @@ class MusicTranslationModelGenerator():
                         augmented.append(self.__wave_augmentation(_wave))
 
                     augmented = np.stack(augmented, axis=0)
-                    print(augmented.shape)
 
                     _, _loss = sess.run([train_step, loss],
                                         feed_dict={x_holder: augmented,
