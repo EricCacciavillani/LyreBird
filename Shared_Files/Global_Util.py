@@ -5,6 +5,7 @@ import itertools
 import pretty_midi
 import math
 import sys
+from tqdm import tqdm
 sys.path.append('..')
 
 from Shared_Files.Global_Util import *
@@ -34,6 +35,11 @@ def find_closest_sum(numbers, target):
     sums = np.asarray(list(map(sum, combs)))
 
     return combs[np.argmin(np.abs(np.asarray(sums) - target))]
+
+def unique_rows(a):
+    a = np.ascontiguousarray(a)
+    unique_a = np.unique(a.view([('', a.dtype)]*a.shape[1]))
+    return unique_a.view(a.dtype).reshape((unique_a.shape[0], a.shape[1]))
 # ---------------------------------------
 
 # --------------- Midi Handling ---------------
@@ -116,6 +122,10 @@ def create_pretty_midi_object(input_seq,
 
     return full_song
 
+def calculate_wave_mse(wave_form_a,
+                       wave_form_b):
+    return np.sqrt(np.mean((wave_form_a - wave_form_b) ** 2))
+
 
 
 def get_instr_note_dict(instr_note_str):
@@ -123,17 +133,18 @@ def get_instr_note_dict(instr_note_str):
         Must have at the program number, is_drum, and the note name
         in the string.
     """
+    instr_note_dict = {comp_part.split(PARAMETER_VAL_SPLITTER.STR)[0]: comp_part.split(PARAMETER_VAL_SPLITTER.STR)[1]
+                       for comp_part in instr_note_str.split(INSTRUMENT_NOTE_SPLITTER.STR)}
 
-    return {comp_part.split(PARAMETER_VAL_SPLITTER.STR)[0]: comp_part.split(PARAMETER_VAL_SPLITTER.STR)[1]
-            for comp_part in instr_note_str.split(INSTRUMENT_NOTE_SPLITTER.STR)}
+    instr_note_dict["Is_Drum"] = (instr_note_dict["Is_Drum"] == "True")
 
-
+    return instr_note_dict
 
 def convert_string_to_instr_note_pair(instr_note_str):
 
     instr_note_dict = get_instr_note_dict(instr_note_str)
     instr_obj = pretty_midi.Instrument(program=int(instr_note_dict["Program"]),
-                                       is_drum=(instr_note_dict["Is_Drum"] == "True"))
+                                       is_drum=(instr_note_dict["Is_Drum"]))
 
     pitch_num = pretty_midi.note_name_to_number(instr_note_dict["Note"])
 
@@ -146,13 +157,52 @@ def convert_string_to_instr_note_pair(instr_note_str):
 
     return instr_obj
 
-def extract_instr_note_pair_attributes(instr_note_obj):
-    return instr_note_obj.fluidsynth(), instr_note_obj.synthesize(), \
-           instr_note_obj.notes[0].pitch
 
+def convert_string_to_instr_obj(instr_str):
 
-def calculate_wave_mse(wave_form_a,wave_form_b):
-    return np.sqrt(np.mean((wave_form_a - wave_form_b) ** 2))
+    instr_note_dict = get_instr_note_dict(instr_str)
+    instr_obj = pretty_midi.Instrument(program=int(instr_note_dict["Program"]),
+                                       is_drum=(instr_note_dict["Is_Drum"] == "True"))
+
+    return instr_obj
+
+def get_instr_wave_forms(instrument_name_contains,
+                         all_instruments,
+                         instr_note_pairs_dict,
+                         unique_matrix=False):
+    instr_wave_forms = dict()
+
+    pbar = tqdm(instrument_name_contains.items())
+    for find_intstr_name, is_drum in pbar:
+        instr_wave_forms[find_intstr_name] = list()
+
+        pbar.set_postfix_str(s=find_intstr_name, refresh=True)
+        for instr_str in all_instruments:
+
+            instr_note_dict = get_instr_note_dict(instr_str)
+            # Find only instruments that are drums
+            if is_drum and instr_note_dict["Is_Drum"]:
+                instr_wave_forms[find_intstr_name] += [convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
+                    FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
+                    for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
+            # Find only instruments that are NOT drums
+            elif is_drum == False and instr_note_dict["Is_Drum"] == False and get_instr_name(instr_str).find(
+                    find_intstr_name) != -1:
+                instr_wave_forms[find_intstr_name] += [convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
+                    FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
+                    for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
+        instr_wave_forms[find_intstr_name] = np.array(instr_wave_forms[find_intstr_name])
+
+    if unique_matrix:
+        for instr, waves in instr_wave_forms.items():
+            instr_wave_forms[instr] = unique_rows(waves)
+
+    return instr_wave_forms
+
+def get_instr_name(instr):
+    return pretty_midi.program_to_instrument_class(convert_string_to_instr_obj(instr).program)
 
 # --------------- Misc ---------------
 def send_sms_to_me(message="You forget to add a message!"):

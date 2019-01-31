@@ -228,7 +228,7 @@ class MusicTranslationModelGenerator():
             pbar = tqdm(range(UNIVERSAL_MUSIC_TRANSLATOR.STEPS_PER_EPOCH))
             for step in pbar:
                 average_loss = 0.0
-                for index, instr in self.__instruments_list:
+                for index, instr in enumerate(self.__instruments_list):
 
                     indexes = np.random.randint(0, self.__instr_wave_forms[instr].shape[0], 1)
                     augmented = []
