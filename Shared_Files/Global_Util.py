@@ -92,7 +92,7 @@ def create_pretty_midi_object(input_seq,
     instrument_dict = dict()
 
     # Iterate through the input sequence in proper order;
-    # relate instruments with proper notes, velocities, and start/end points.
+    # relate instruments with proper Classical_Notes, velocities, and start/end points.
     for index, instr_note_pair in enumerate(input_seq):
 
         tokenized_str = instr_note_pair.split(INSTRUMENT_NOTE_SPLITTER.STR)
@@ -103,7 +103,7 @@ def create_pretty_midi_object(input_seq,
         # A new instrument was found
         if instrument not in instrument_dict.keys():
 
-            # Convert string data to proper midi info
+            # Convert string Notes to proper midi info
             program_number = int(tokenized_str[0].split(PARAMETER_VAL_SPLITTER.STR)[1])
             is_drum = (tokenized_str[1].split(PARAMETER_VAL_SPLITTER.STR)[1] == "True")
 
@@ -118,7 +118,7 @@ def create_pretty_midi_object(input_seq,
             velocity=velocity_list[index], pitch=pitch,
             start=note_start_end_list[index][0], end=note_start_end_list[index][1]))
 
-    # Generate midi object with instrument based data
+    # Generate midi object with instrument based Notes
     full_song = pretty_midi.PrettyMIDI()
     full_song.instruments = [instr for instr in instrument_dict.values()]
 

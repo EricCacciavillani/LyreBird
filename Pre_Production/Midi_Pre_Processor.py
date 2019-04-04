@@ -18,8 +18,8 @@ warnings.filterwarnings("ignore")
 
 class MidiPreProcessor:
     """
-        Reads across multiple data sets stores meta data on each
-        set and associated files for data analysis and model training.
+        Reads across multiple Notes sets stores meta Notes on each
+        set and associated files for Notes analysis and model training.
     """
 
     def __init__(self, path_to_full_data_set,
@@ -43,7 +43,7 @@ class MidiPreProcessor:
         self.__instr_note_pairs_dict = dict()
         self.__all_instruments = set()
 
-        # Files to ignore for when splicing data into train/test
+        # Files to ignore for when splicing Notes into train/test
         self.__blacklisted_files_validation = set()
 
         # Stores all genres to another dict that stores
@@ -77,7 +77,7 @@ class MidiPreProcessor:
         thread_pool_results = self.__thread_pool_datasets_reader(
             self.__genre_dataset_init, path_to_full_data_set, genre_sub_sample_set)
 
-        # Init all data based on thread pool results
+        # Init all Notes based on thread pool results
         for genre_count, genre_dataset_result in enumerate(thread_pool_results):
 
             # Add to set of all instr/note pairs
@@ -106,7 +106,7 @@ class MidiPreProcessor:
                 "corrupted_files"]
             self.__small_files_paths += genre_dataset_result["small_files"]
 
-        # Sort all data before encoding for my own sanity
+        # Sort all Notes before encoding for my own sanity
         self.__all_possible_instr_note_pairs = sorted(
             self.__all_possible_instr_note_pairs)
         self.__all_instruments = sorted(self.__all_instruments)
@@ -171,7 +171,7 @@ class MidiPreProcessor:
         if self.__small_files_paths:
 
             print("The Pre Processor found {0} files that"
-                  " are smaller or equal to than {1} notes".format(
+                  " are smaller or equal to than {1} Classical_Notes".format(
                 len(self.__small_files_paths),
                 MIDI_CONSTANTS.SMALL_FILE_CHECK))
 
@@ -246,7 +246,7 @@ class MidiPreProcessor:
             Init full dataset attributes on MidiPreProcessor init
         """
 
-        # Store meta data on file and genre specific data
+        # Store meta Notes on file and genre specific Notes
         genre_instr_note_pairs = set()
         genre_instr_note_pairs_counter = Counter()
         genre_instruments = set()
@@ -266,7 +266,7 @@ class MidiPreProcessor:
             self.__pbar.set_postfix_str(s=file.split("/", -1)[-1][:20],
                                         refresh=True)
 
-            # Meta data on the file
+            # Meta Notes on the file
             midi_file_attr = self.read_midi_file(file)
 
             # Check if flags were raised
@@ -275,7 +275,7 @@ class MidiPreProcessor:
             elif midi_file_attr["small_file_check"]:
                 small_files.append(file)
 
-            # File passed requirements; store meta data on genre and file
+            # File passed requirements; store meta Notes on genre and file
             else:
 
                 genre_instruments |= midi_file_attr["instruments"]
@@ -343,7 +343,7 @@ class MidiPreProcessor:
 
     def read_midi_file(self, file):
         """
-            Extract out the instruments/notes of the midi file.
+            Extract out the instruments/Classical_Notes of the midi file.
         """
         # Attempt to parse midi file
         try:
@@ -362,7 +362,7 @@ class MidiPreProcessor:
 
         file_instruments = set()
 
-        # Move through midi file; store data on instrument/note relationship in
+        # Move through midi file; store Notes on instrument/note relationship in
         # string
         for instr in midi_data.instruments:
 
@@ -388,7 +388,7 @@ class MidiPreProcessor:
                     "small_file_check": True,
                     "corrupted": False}
 
-        # Sort notes in proper sequence based on their starting and end points
+        # Sort Classical_Notes in proper sequence based on their starting and end points
         flat_instr_note_seq.sort(key=lambda tup: (tup[1].start, tup[1].end))
         flat_instr_note_seq = [instr_note[0] for instr_note in
                               flat_instr_note_seq]

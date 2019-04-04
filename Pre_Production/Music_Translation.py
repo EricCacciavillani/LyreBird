@@ -392,7 +392,7 @@ class MusicTranslationModelGenerator():
         outputs = tf.layers.dense(outputs, domain_num)
         return outputs
 
-    ### data augmetation
+    ### Notes augmetation
     def __pitch_shift(self, inputs, start_index, end_index, n_steps):
         shifted = librosa.effects.pitch_shift(inputs[start_index:end_index], 8000,
                                               n_steps)

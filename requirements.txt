@@ -1,0 +1,11 @@
+pip install pretty_midi
+pip install twilio
+pip install music21
+pip install twilio
+pip install Keras
+pip install tensorflow
+pip install music21
+pip install pretty_midi
+pip install tqdm
+pip install librosa
+pip install matplotlib
