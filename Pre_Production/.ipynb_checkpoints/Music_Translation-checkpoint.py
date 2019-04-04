@@ -62,9 +62,11 @@ class MusicTranslationModelGenerator():
 
     def __init__(self,
                  instr_wave_forms,
+                 models_gen_count=1,
                  twilo_account=False):
 
         self.__instr_wave_forms = instr_wave_forms
+        self.__models_gen_count = models_gen_count
         self.__twilo_account = twilo_account
 
         # ----------
@@ -72,10 +74,8 @@ class MusicTranslationModelGenerator():
         self.__INSTRUMENTS_NUM = len(self.__instruments_list)
 
     def create_model(self,
-                     load_model_path=None,
-                     training_sessions=0,
-                     steps_per_training_session=0):
-
+                     train_model=True,
+                     model_number=None):
 
         # Resets the default graph stack/all global tf vars
         tf.reset_default_graph()
@@ -200,8 +200,8 @@ class MusicTranslationModelGenerator():
         self.__sess.run(tf.global_variables_initializer())
         saver = tf.train.Saver()
 
-        if load_model_path:
-            saver.restore(self.__sess, load_model_path)
+        if model_number:
+            saver.restore(self.__sess, ABS_PATHS.SAVED_MODELS_PATH_LYREBIRD_TN + "/model.ckpt-" + str(model_number))
             print("Restored model!")
 
         # # Restore variables from disk.
@@ -210,10 +210,11 @@ class MusicTranslationModelGenerator():
 
         self.__sess.run(tf.global_variables_initializer())
 
-        if training_sessions > 0:
+        if train_model:
             _epoch = 11
             neural_average_loss = 0.0
-            max_lost_found = float("-inf")
+
+            loweset_average_found = float("Inf")
 
             print("Begin training graph")
 
@@ -223,9 +224,10 @@ class MusicTranslationModelGenerator():
                 recorded_losses[instr] = list()
             recorded_losses["neural_average_loss"] = list()
 
-            for session_num in range(training_sessions):
+            for _ in range(self.__models_gen_count):
 
-                pbar = tqdm(range(steps_per_training_session))
+                ### TRAINING
+                pbar = tqdm(range(UNIVERSAL_MUSIC_TRANSLATOR.STEPS_PER_EPOCH))
                 for step in pbar:
 
                     for index, instr in enumerate(self.__instruments_list):
@@ -244,18 +246,16 @@ class MusicTranslationModelGenerator():
 
                         neural_average_loss = 0.99 * neural_average_loss + 0.01 * _loss
 
-                        recorded_losses[instr] += _loss
+                        recorded_losses[instr] +=  _loss
                         recorded_losses["neural_average_loss"] += neural_average_loss
 
                     pbar.set_postfix_str(s='neural_average_loss: {0}'.format(neural_average_loss), refresh=True)
 
-                    self.__save(self.__sess, saver, ABS_PATHS.SAVED_MODELS_PATH_LYREBIRD_TN, step)
-
-                    if max_lost_found < neural_average_loss:
-                        max_lost_found = neural_average_loss
+                    if neural_average_loss-.0 < sum(recorded_losses["neural_average_loss"]) / float(len(recorded_losses["neural_average_loss"])):
                         self.__save(self.__sess, saver, ABS_PATHS.SAVED_MODELS_PATH_LYREBIRD_TN_BEST, step)
-                        print("hit")
-
+                        send_sms_to_me("New lowest average loss found at {0}".format(loweset_average_found))
+                    else:
+                        self.__save(self.__sess, saver, ABS_PATHS.SAVED_MODELS_PATH_LYREBIRD_TN, step)
 
                     # saver.save(sess, ABS_PATHS.SAVED_MODELS_PATH + "LyreBird_Model_" + str(datetime.datetime.now())[0:19])
                 model_history_shelve = shelve.open(ABS_PATHS.SHELVES_PATH + SHELVE_NAMES.MODELS_HISTORY)
@@ -264,7 +264,7 @@ class MusicTranslationModelGenerator():
                 if "recorded_losses" in model_history_shelve.keys():
                     # Append losses together for shelf
                     shelved_recorded_loses = model_history_shelve["recorded_losses"]
-                    for instr, losses in shelved_recorded_loses.items():
+                    for instr,losses in shelved_recorded_loses.items():
                         shelved_recorded_loses[instr] += recorded_losses[instr]
 
                     model_history_shelve["recorded_losses"] = shelved_recorded_loses
@@ -276,12 +276,11 @@ class MusicTranslationModelGenerator():
                 model_history_shelve.close()
 
                 if self.__twilo_account:
-                    send_sms_to_me("Model finished training session " + str(session_num) +" at " + str(datetime.datetime.now())[0:19] + " Avg Loss: " +
+                    send_sms_to_me("Model was generated at " + str(datetime.datetime.now())[0:19] + "Avg Loss: " +
                                    str(neural_average_loss))
                 self.generate_from_sample_music()
 
-    def generate_from_sample_music(self,
-                                   outputdir=ABS_PATHS.AUDIO_CACHE_PATH):
+    def generate_from_sample_music(self):
         src_instrument_index = "Piano"
         dest_instrument_index = 0
 
@@ -294,7 +293,11 @@ class MusicTranslationModelGenerator():
 
         _latents = self.__sess.run(self.__up_latents, feed_dict={self.__x_holder: _src})
 
-        librosa.output.write_wav(outputdir + 'Test_File_1.wav', _src[0], 8000, 1)
+        print(_latents.shape)
+
+
+        sf.write("test_file_1_44300.wav", _src[0], FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)  # load a NumPy array
+        sf.write("test_file_1_8000.wav", _src[0], 8000)  # load a NumPy array
 
         _samples = np.zeros([1, 1024])
         _latents = np.concatenate([np.zeros([1, 1024, UNIVERSAL_MUSIC_TRANSLATOR.LATENT_DIM]), _latents], axis=1)
@@ -305,8 +308,12 @@ class MusicTranslationModelGenerator():
             _samples = np.concatenate([_samples, np.expand_dims(_inference_sample_list[dest_instrument_index], axis=0)],
                                       axis=-1)
 
-        librosa.output.write_wav(outputdir + 'Test_File_2.wav', _src[0], 8000, 1)
-        librosa.output.write_wav(outputdir + 'Test_File_3.wav', _samples[0], 8000, 1)
+        print(_samples.shape)
+        sf.write("test_file_2_44300.wav", _src[0], FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)  # load a NumPy array
+        sf.write("test_file_2_8000.wav", _src[0], 8000)
+
+        sf.write("test_file_3_44300.wav", _samples[0], FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)  # load a NumPy array
+        sf.write("test_file_3_8000.wav", _samples[0], 8000)
 
 
         # Mulaw is a way of compressing for audio waves

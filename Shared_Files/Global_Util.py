@@ -6,6 +6,7 @@ import pretty_midi
 import math
 import sys
 from tqdm import tqdm
+import librosa
 sys.path.append('..')
 
 from Shared_Files.Global_Util import *
@@ -40,6 +41,7 @@ def unique_rows(a):
     a = np.ascontiguousarray(a)
     unique_a = np.unique(a.view([('', a.dtype)]*a.shape[1]))
     return unique_a.view(a.dtype).reshape((unique_a.shape[0], a.shape[1]))
+
 # ---------------------------------------
 
 # --------------- Midi Handling ---------------
@@ -169,29 +171,51 @@ def convert_string_to_instr_obj(instr_str):
 def get_instr_wave_forms(instrument_name_contains,
                          all_instruments,
                          instr_note_pairs_dict,
-                         unique_matrix=False):
+                         unique_matrix=False,
+                         normalize=True,
+                         remove_rows_with_files=False):
     instr_wave_forms = dict()
 
     pbar = tqdm(instrument_name_contains.items())
     for find_intstr_name, is_drum in pbar:
         instr_wave_forms[find_intstr_name] = list()
 
-        pbar.set_postfix_str(s=find_intstr_name, refresh=True)
+        pbar.set_postfix_str(s=find_intstr_name,
+                             refresh=True)
         for instr_str in all_instruments:
 
             instr_note_dict = get_instr_note_dict(instr_str)
             # Find only instruments that are drums
             if is_drum and instr_note_dict["Is_Drum"]:
-                instr_wave_forms[find_intstr_name] += [convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
-                    FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
-                    for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
+                if normalize:
+                    instr_wave_forms[find_intstr_name] += [librosa.util.normalize(
+                        convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
+                        FLUID_SYNTH_CONSTANTS.SAMPLING_RATE), axis=0)
+                        for instr_note_pair in instr_note_pairs_dict[instr_str]]
+                else:
+                    instr_wave_forms[find_intstr_name] += [
+                        convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
+                            FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
+                        for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
 
             # Find only instruments that are NOT drums
             elif is_drum == False and instr_note_dict["Is_Drum"] == False and get_instr_name(instr_str).find(
                     find_intstr_name) != -1:
-                instr_wave_forms[find_intstr_name] += [convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
-                    FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
-                    for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
+                if normalize:
+                    instr_wave_forms[find_intstr_name] += [librosa.util.normalize(
+                        convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
+                        FLUID_SYNTH_CONSTANTS.SAMPLING_RATE), axis=0)
+                        for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
+                else:
+                    instr_wave_forms[find_intstr_name] += [
+                        convert_string_to_instr_note_pair(instr_note_pair).fluidsynth(
+                            FLUID_SYNTH_CONSTANTS.SAMPLING_RATE)
+                        for instr_note_pair in instr_note_pairs_dict[instr_str]]
+
 
         instr_wave_forms[find_intstr_name] = np.array(instr_wave_forms[find_intstr_name])
 
@@ -199,12 +223,31 @@ def get_instr_wave_forms(instrument_name_contains,
         for instr, waves in instr_wave_forms.items():
             instr_wave_forms[instr] = unique_rows(waves)
 
+    if remove_rows_with_files:
+
+        for instr, waves in instr_wave_forms.items():
+
+            file_path = ABS_PATHS.MATRIX_ROW_CLEANING + instr + "_Matrix_Removal.txt"
+            try:
+                removal_nums = get_removal_nums_from_file(file_path)
+                instr_wave_forms[instr] = np.delete(waves, list(removal_nums), axis=0)
+            except FileNotFoundError as fnf_error:
+                print("The file path \"{0}\" was not found!".format(file_path))
+
+
     return instr_wave_forms
 
 def get_instr_name(instr):
     return pretty_midi.program_to_instrument_class(convert_string_to_instr_obj(instr).program)
 
 # --------------- Misc ---------------
+def get_removal_nums_from_file(filename):
+    with open(filename) as fp:
+        data = [set(map(int, line.strip().split(','))) for line in fp]
+
+    return data[0]
+
+
 def send_sms_to_me(message="You forget to add a message!"):
     """
         Send a sms text message to a phone using twilo.
