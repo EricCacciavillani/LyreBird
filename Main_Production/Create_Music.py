@@ -13,21 +13,26 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.layers import Activation
 
+
+# Main function to generate the music
 def generate():
 
+    # Open and read notes from file
     with open(ABS_PATHS.SAVED_NOTES_PATH + "Classical_Notes", 'rb') as filepath:
         notes = pickle.load(filepath)
 
     pitchnames = sorted(set(item for item in notes))
-
     n_vocab = len(set(notes))
 
+    # ----
     network_input, normalized_input = prepare_sequences(notes, pitchnames, n_vocab)
     model = create_network(normalized_input, n_vocab)
     prediction_output = generate_notes(model, network_input, pitchnames, n_vocab)
     create_midi(prediction_output)
 
-def prepare_sequences(notes, pitchnames, n_vocab):
+def prepare_sequences(notes,
+                      pitchnames,
+                      n_vocab):
 
     note_to_int = dict((note, number) for number, note in enumerate(pitchnames))
 
@@ -47,8 +52,8 @@ def prepare_sequences(notes, pitchnames, n_vocab):
 
     return (network_input, normalized_input)
 
+# Recreate the model from train
 def create_network(network_input, n_vocab):
-    """ create the structure of the neural network """
     model = Sequential()
     model.add(LSTM(
         512,
@@ -65,14 +70,15 @@ def create_network(network_input, n_vocab):
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
 
-    print(ABS_PATHS.SAVED_WEIGHTS_PATH)
-
-
     model.load_weights(ABS_PATHS.SAVED_WEIGHTS_PATH + 'Classic_Music_Weights.hdf5')
 
     return model
 
-def generate_notes(model, network_input, pitchnames, n_vocab):
+# Predict notes with given input
+def generate_notes(model,
+                   network_input,
+                   pitchnames,
+                   n_vocab):
 
     start = numpy.random.randint(0, len(network_input)-1)
 
@@ -96,13 +102,16 @@ def generate_notes(model, network_input, pitchnames, n_vocab):
 
     return prediction_output
 
+# Generate music
 def create_midi(prediction_output):
 
     offset = 0
     output_notes = []
 
+    # Iterate list of notes to generate music
     for pattern in prediction_output:
 
+        # Must be a Chord
         if ('.' in pattern) or pattern.isdigit():
             notes_in_chord = pattern.split('.')
             notes = []
@@ -113,13 +122,14 @@ def create_midi(prediction_output):
             new_chord = chord.Chord(notes)
             new_chord.offset = offset
             output_notes.append(new_chord)
-        # pattern is a note
+        # Must be a note
         else:
             new_note = note.Note(pattern)
             new_note.offset = offset
             new_note.storedInstrument = instrument.Piano()
             output_notes.append(new_note)
 
+        # Offset next note by .5 of a second
         offset += 0.5
 
     midi_stream = stream.Stream(output_notes)

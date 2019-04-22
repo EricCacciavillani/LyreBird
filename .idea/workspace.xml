@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71645949-a492-4e40-b5ac-b0b4f0f2991b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Main_Production/Generate_Music.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pre_Production/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/etc/Experiments/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/etc/Research/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/etc/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Dump/Saved_Models/GAN_Pool/Icon&#10;" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Dump/Saved_Models/Icon&#10;" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data_Dump/Shelves/Icon&#10;" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main_Production/Icon&#10;" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main_Production/LSTM_Muisc_generator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Bad Code BackUp/Categorical_Notes_Model_Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Experiments/Categorical_Notes_Model_Train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Bad Code BackUp/Icon&#10;" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Icon&#10;" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Model_Generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Experiments/Model_Generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Music_Translation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Music_Translation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre_Production/Music_Translation_Setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Music_Translation_Setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared_Files/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared_Files/Global_Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Files/Global_Util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/.ipynb_checkpoints/Icon&#10;" beforeDir="false" afterPath="$PROJECT_DIR$/etc/.ipynb_checkpoints/Icon&#10;" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/.ipynb_checkpoints/Model_Analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/etc/.ipynb_checkpoints/Model_Analysis-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/Graphic_Production/Gifs for Presentations/Icon&#10;" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Graphic_Production/Gifs for Presentations/Icon&#10;" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/Model_Analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Model_Analysis.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/Research/Icon&#10;" beforeDir="false" afterPath="$PROJECT_DIR$/etc/Research/Icon&#10;" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main_Production/Create_Music.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main_Production/Create_Music.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_Production/Train_RNN_Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre_Production/Train_RNN_Models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,34 +15,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
+        <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3345">
-              <caret line="223" column="56" selection-start-line="223" selection-start-column="56" selection-end-line="223" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
+        <entry file="file://$PROJECT_DIR$/Pre_Production/Train_RNN_Models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="33" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="239" column="26" selection-start-line="239" selection-start-column="26" selection-end-line="239" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1530">
+              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -81,13 +45,63 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="30" selection-start-column="30" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Pre_Production/Music_Translation_Setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="63" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="63" />
+            <state relative-caret-position="885">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Shared_Files/Music_Pallete.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Failed_Code/LSTM_Muisc_generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#68#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Failed_Code/Generate_Music.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Main_Production/Create_Music.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2070">
+              <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
             </state>
           </provider>
         </entry>
@@ -163,6 +177,8 @@
         <option value="$PROJECT_DIR$/Pre_Production/Music_Translation.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Music_Translation_Setup.py" />
         <option value="$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py" />
+        <option value="$PROJECT_DIR$/Pre_Production/Train_RNN_Models.py" />
+        <option value="$PROJECT_DIR$/Main_Production/Create_Music.py" />
       </list>
     </option>
   </component>
@@ -177,7 +193,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,28 +208,13 @@
             <path>
               <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Data_Dump" type="462c0819:PsiDirectoryNode" />
-              <item name="Saved_Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Main_Production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Pre_Production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LyreBird" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LyreBird" type="462c0819:PsiDirectoryNode" />
-              <item name="Shared_Files" type="462c0819:PsiDirectoryNode" />
+              <item name="Testing" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,17 +284,18 @@
       <workItem from="1552945426231" duration="1072000" />
       <workItem from="1553085188274" duration="619000" />
       <workItem from="1553398401198" duration="985000" />
+      <workItem from="1555887426466" duration="651000" />
+      <workItem from="1555891209436" duration="402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119949000" />
+    <option name="totallyTimeSpent" value="121002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="171" y="43" width="1400" height="987" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3556701" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36597937" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -306,10 +307,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="File Transfer" order="9" sideWeight="0.7209131" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.72017676" visible="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49852726" weight="0.32960895" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.2790869" side_tool="true" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.27982327" side_tool="true" visible="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Python Console" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -326,26 +327,10 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/etc/Research/LSTM_Muisc_generator.py" />
-    <entry file="file://$PROJECT_DIR$/etc/Experiments/Model_Generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main_Production/Generate_Music.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/Experiments/Model_Generator.py" />
+    <entry file="file://$PROJECT_DIR$/Main_Production/Generate_Music.py" />
     <entry file="file://$PROJECT_DIR$/Pre_Production/test.py" />
-    <entry file="file://$PROJECT_DIR$/etc/Experiments/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-362" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/Experiments/test.py" />
     <entry file="file://$PROJECT_DIR$/etc/Model_Analysis.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -353,26 +338,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/etc/Experiments/Categorical_Notes_Model_Train.py">
+    <entry file="file://$PROJECT_DIR$/etc/Experiments/Categorical_Notes_Model_Train.py" />
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1061">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shared_Files/Music_Pallete.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        <state relative-caret-position="-3392">
+          <caret line="239" column="26" selection-start-line="239" selection-start-column="26" selection-end-line="239" selection-end-column="26" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -381,7 +351,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Shared_Files/Global_Util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3345">
+        <state relative-caret-position="3225">
           <caret line="223" column="56" selection-start-line="223" selection-start-column="56" selection-end-line="223" selection-end-column="56" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
@@ -392,7 +362,14 @@
     <entry file="file://$PROJECT_DIR$/Shared_Files/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="33" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pre_Production/Train_RNN_Models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -406,12 +383,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Focal_Loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Pre_Production/Music_Translation_Setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="63" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="63" />
+        <state relative-caret-position="885">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared_Files/Music_Pallete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Failed_Code/LSTM_Muisc_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -423,13 +426,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pre_Production/Midi_Pre_Processor.py">
+    <entry file="file://$PROJECT_DIR$/Failed_Code/Generate_Music.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="239" column="26" selection-start-line="239" selection-start-column="26" selection-end-line="239" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main_Production/Create_Music.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2070">
+          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
         </state>
       </provider>
     </entry>

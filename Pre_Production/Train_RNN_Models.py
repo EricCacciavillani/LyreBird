@@ -18,18 +18,26 @@ sys.path.append('..')
 from Shared_Files.Constants import *
 from Shared_Files.Global_Util import *
 
+# Begin Training the network
 def train_network():
+
+    # Get the notes from the saved data
     notes = get_notes()
 
+    # Create one hot encoder output for network
     n_vocab = len(set(notes))
-
     network_input, network_output = prepare_sequences(notes, n_vocab)
 
+    # Generate the keras RNN model
     model = create_network(network_input, n_vocab)
 
+    # Train the model on the notes
     train(model, network_input, network_output)
 
 def get_notes():
+
+    # Iterate through the directory of all mid files and
+    # attempt to parse out the notes
     notes = []
     for file in glob.glob(ABS_PATHS.TRAINING_DATASET_DIRECTORY_PATH + "Classic_Music_Midi/*.mid"):
         midi = converter.parse(file)
@@ -50,6 +58,7 @@ def get_notes():
             elif isinstance(element, chord.Chord):
                 notes.append('.'.join(str(n) for n in element.normalOrder))
 
+    # Save using pickle
     with open('Notes/Classical_Notes', 'wb') as filepath:
         pickle.dump(notes, filepath)
 
@@ -80,8 +89,8 @@ def prepare_sequences(notes, n_vocab):
 
     return (network_input, network_output)
 
+# Create the model
 def create_network(network_input, n_vocab):
-    """ create the structure of the neural network """
     model = Sequential()
     model.add(LSTM(
         512,
@@ -100,7 +109,10 @@ def create_network(network_input, n_vocab):
 
     return model
 
+# Train the model
 def train(model, network_input, network_output):
+
+    # Callback setup for the model
     filepath = ABS_PATHS.SAVED_WEIGHTS_PATH + "weights-improvement-{epoch:02d}-{loss:.4f}-bigger.hdf5"
     checkpoint = ModelCheckpoint(
         filepath,
