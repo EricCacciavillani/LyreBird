@@ -9,11 +9,22 @@ My capstone project for exploring the creation of music. I have come up with ser
 My motivation for this project is trying to explore the creativity of Ai and how to handle data that requires multidimensional data. 
 
 ## Installation
-
-Provide code examples and explanations of how to get the project.
-
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+  pip install music21
+  pip install tensorflow
+  pip install Train_RNN_Models.py
+  pip install twilio
+  pip install pretty_midi
+  pip install tqdm
+  pip install librosa
+  pip install matplotlib
+  
+## Train model
+   1. cd Pre_Production
+   2. python Train_RNN_Models.py
+   
+## Generate music
+   1. cd Main_Production
+   2. python Create_Music.py
 
 ## License
 
