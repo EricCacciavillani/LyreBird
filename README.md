@@ -29,7 +29,7 @@ My motivation for this project is trying to explore the creativity of Ai and how
 ## To run other expirments on other branches
  * Install Fluidsynth: 
   * http://macappstore.org/fluid-synth/
-  * http://www.fluidsynth.org/
+   * http://www.fluidsynth.org/
  
 
 ## License
