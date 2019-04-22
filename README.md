@@ -25,6 +25,12 @@ My motivation for this project is trying to explore the creativity of Ai and how
 ## Generate music
    1. cd Main_Production
    2. python Create_Music.py
+   
+## To run other expirments on other branches
+ * Install Fluidsynth: 
+  ** http://macappstore.org/fluid-synth/
+  ** http://www.fluidsynth.org/
+ 
 
 ## License
 
